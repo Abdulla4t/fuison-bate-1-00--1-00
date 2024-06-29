@@ -423,7 +423,7 @@ border-left: 4px #FA0000 solid;
 }
 #narInp,#inputS,.search-initims input{
   height: 50px;
-  width: 400px;
+  width: 400px !important;
   border-radius:15px ;
   outline: none;
   border: 1px #000 solid;
