@@ -1,4 +1,5 @@
-
+let loding = document.querySelector('.over-lay');
+let body = document.querySelector('.body');
 window.addEventListener('load', function() {
   setTimeout(function() {
     loding.style.transition = 'opacity 1s';
@@ -55,7 +56,7 @@ window.addEventListener('mouseup',function (event) {
 let  nameInput = 'unknown';
 
 
-let proC = document.getElementById('pro-c') ;
+let proC = document.querySelector('.pro-c') ;
 proC.style.display = 'block';
 const colorconst = '2977F6';
 // logo Variables
@@ -495,15 +496,16 @@ let rrrt = document.querySelector('.rrrt');
 let rrrtf = document.querySelector('.rrrtf');
 let rrrrt = document.querySelector('.rrrrt');
 let rrrrrt = document.querySelector('.rrrrrt');
-let body = document.querySelector('.body');
-let loding = document.querySelector('.over-lay');
+let leftS = document.querySelector('.left-s')
+
 let webMood = 'dark';
 let darMood = 'dark';
 let box = document.querySelector('.box');
 let boxComent = document.querySelector('.box-coment');
 let pi = document.getElementById('pi');
 function darkk() {
-  
+  leftS.style.background = '#333';
+  leftS.style.color = '#f1f1f1';
 pi.style = `
      color:#fff;
      background :#6C6C6C;
@@ -535,7 +537,7 @@ showMood = 'show';
 
 }
 w.style =`color:#B6B6B6;`;
-
+document.querySelector('.navbar').style.background = "#222";
 infoo.style = `color:#D5D5D5;`;
 infooo.style = `color:#D5D5D5;`;
 infoooo.style = `color:#D5D5D5;`;
@@ -637,6 +639,9 @@ logoMood = 'span';
 
 }
 function lightt() {
+  leftS.style.background = '#f1f1f1';
+  leftS.style.color = '#000';
+  document.querySelector('.navbar').style.background = "#fff";
 rrt.style = `background :#f0f0f0;
 color:#fff;
 `
@@ -748,6 +753,7 @@ menu.style = `
 box.style = `background :#fff;`; body.style = `background :#f1f1f1;`;infoAlert.style = `background :#f0f0f;`;
 
 }
+
 let isDarkMode = localStorage.getItem('isDarkMode') === 'true';
 
 function toggleMode() {
@@ -788,12 +794,13 @@ window.onload = function() {
   }
 };
 
+n11();
 let xDatep ;
 let xReq = new XMLHttpRequest();
-xReq.open('GET', 'http://localhost:7700/code/to-plasten.json', true);
+xReq.open('GET', 'to-plasten.json', true);
 xReq.onload = function() {
   if (xReq.status === 200) {
-     xDatep = JSON.parse(xReq.responseText)
+     xDatep = JSON.parse(xReq.responseText);
     
   } else {
     console.error('Error', xReq.status, xReq.statusText);
@@ -1106,13 +1113,15 @@ checkPassword.onclick = function() {
     passwordSin.type = 'password';
   }
 }
-let log = document.querySelector ('.log')
-let sin = document.querySelector ('.sin')
-function logInShow() {
+let sinLog = document.getElementById('sinLog');
+let logSin = document.getElementById('logSin');
+let log = document.querySelector('.log');
+let sin = document.querySelector('.sin');
+sinLog.onclick  = function () {
   sin.style = `display:none;`
   log.style = `display:flex;`
 }
-function sinUpShow() {
+logSin.onclick  = function () {
   log.style = `display:none;`
   sin.style = `display:flex;`
 }
@@ -1195,7 +1204,7 @@ function clearInluts() {
 }
 function showApp() {
   document.querySelector('.login').style = `display:none `;
-  document.querySelector('.navbar').style= `display:flex `
+  document.querySelector('.navbar').style= `display:flex `;
 }
 let nameLog = document.getElementById('nameLog')
 function login() {

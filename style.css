@@ -148,6 +148,7 @@ transition: 1s;
   flex-direction: column;
   margin-bottom: 22px;
 }
+
 .pspan{
   font-size: 17px;
   color: #2977F6;
@@ -163,7 +164,7 @@ transition: 1s;
 }
 .profile1 img{
   height: 40px;
-  width: 40px;
+  /*width: 40px;*/
   border-radius: 50%;
   border-bottom: 4px #00FA41 solid;
   border-top: 4px #000000 solid;
@@ -410,8 +411,8 @@ margin-bottom:10px;
   background :#222;
 }
 .pro-c{
-  height: 45px;
-  width: 45px;
+ max-height: 45px;
+max-width:  45px;
   margin:0px 10px; 
   border-radius: 50%;
   border-bottom: 4px #00FA41 solid;
@@ -596,7 +597,7 @@ align-items: center;
   display: flex;
 justify-content: center;
 align-items: center;
-  background :#444;
+  background :#202020;
   color: #fff;
   position: fixed;
   top:0;
@@ -818,7 +819,7 @@ padding-right: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background :#444;
+    background :#202020;
     color: #fff;
     position: fixed;
     top:0;
@@ -905,12 +906,12 @@ margin: 25px 10px;
 #sinUpBtn:hover{
   background: #2977F6;
 }
-#sinLog{
+.log-sin{
   color: #fff;
   padding: 15px;
   background: none;
 }
-#sinLog:hover{
+.log-sin:hover{
   color: #C8DDFF;
 }
 .search-initims {
@@ -936,12 +937,19 @@ margin: 25px 10px;
   background :#2977F6;
 }
 .monm{
-  margin: 200px auto;
+  display:flex;
   padding: 50px 300px ;
   color: #31FF4B;
   font-size: 40px;
+  height: 100vw;
+
+  align-items: center;
+  justify-content: center;
+}
+.monm p{
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .naveev img{
   border-radius: 50%;
@@ -962,10 +970,10 @@ margin: 25px 10px;
             justify-content: space-around;
             padding: 10px 0;
             box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
-            overflow: hidden; /* لمنع تجاوز المحتوى */
             display: none;
             transition: .5s;
-            transform: translateX(100%)
+            transform: translateX(100%);
+            
         }
 
         .navbar-menu {
@@ -1004,7 +1012,8 @@ margin: 25px 10px;
 
 
         .necv{
-          padding: 30px;
+          padding: 15px 30px;
+          
         }
         .meno {
   display: none;
@@ -1016,8 +1025,14 @@ margin: 25px 10px;
    z-index: 5;
    position: fixed;
  }
+ .containerq,.connect-with-uss{
+   margin-bottom: 300px;
+ }
  #posts,#postsSsearch{
    margin-bottom: 200px ;
+ }
+ .monm p{
+   font-size: 50px
  }
  .right-s {
    width: 0;
@@ -1045,7 +1060,7 @@ margin: 25px 10px;
  .rrrtf{
    padding:20px 0 ;
  }
- .pro-post p{
+ .pro-post p , .date{
    font-size: 18px;
  }
  
@@ -1067,12 +1082,26 @@ margin: 25px 10px;
   .btn-info{
     padding: 10px 170px;
   }
+
 }
 @media (max-width: 600px) {
+.title-q{
+  font-size: 20px;
+  
+}
+.icon{
+  font-size: 35px;
+}
+  #proC{
+    margin-right: 0px;
+  }
+  #narInp{
+    margin-left:0;
+  }
   .pi1{
     display: none;
   }
-   .pro-post p {
+   .pro-post p ,date{
    font-size: 15px;
  }
    .box-coment {
@@ -1091,13 +1120,33 @@ margin: 25px 10px;
     width: 140px;
     margin: 5px 0;
   } 
-  
+
 }
 @media (max-width: 500px) {
+.title-q {
+  font-size: 17px;
+
+}
+.icon {
+  font-size: 32px;
+}
   .pi1,.pi2,.pi4 {
     display: none;
   }
-  
+    #inputSs,#inpSI,#btnS{
+      width: 340px;
+      margin: 5px 0;
+    }.search-initims{
+      margin-right: 0;
+    }
+    .search-initims button{
+      padding-left:13px;
+      padding-right:13px;
+margin: 5px 0;
+    }
+.rrrrrt {
+  padding: 0;
+}
    .box-coment {
    padding: 7px;
  }
@@ -1130,11 +1179,11 @@ margin: 25px 10px;
 header{
     padding-right:240px;
   }
- 
-  
+
+
 }
 @media (max-width: 450px) {
-  
+
 
     .navbar-item a  {
     padding: 2px;
@@ -1161,13 +1210,26 @@ header{
     .btn-info {
     padding: 10px 120px;
   }
-    .input-s {
-    width: 80px;
-    margin: 5px 0;
-    background :red;
-  }
+  #inputSs,#inpSI,#btnS{
+      width: 350px;
+      margin: 5px 0;
+    }.search-initims{
+      margin-right: 0;
+    }
+    .search-initims button{
+      padding-left:10px;
+      padding-right:10px;
+margin: 5px 0;
+    }
 }
 @media (max-width: 400px) {
+.title-q {
+  font-size: 15px;
+
+}
+.icon {
+  font-size: 30px;
+}
   header {
   padding-right: 350px;
 }
@@ -1196,17 +1258,37 @@ header{
     .btn-info {
     padding: 10px 120px;
   }
-    .input-s {
-    width: 80px;
-    margin: 5px 0;
-    background :red;
+   .necv {
+     display: flex;
+     padding: 16px 3px;
+     
+     font-size: 3px;
+     width: 3px;
+     height: 3px;
+     justify-content: center;
+     align-items: center;
+   }
+  #inputSs,#inpSI,#btnS{
+      width: 300px;
+      margin: 5px 0;
+    }.search-initims{
+      margin-right: 0;
+    }
+    .search-initims button{
+      padding-left:7px;
+      padding-right:7px;
+margin: 5px 0;
+    }
+  .navbar-menu{
+    justify-content: none;
   }
 }
 @media (max-width: 350px) {
   header {
     padding-right: 400px;
   }
-  
+
+
 }
  .containerq {
    height: 100vh;
@@ -1216,7 +1298,7 @@ header{
 .iamgss{
   display:flex;
   justify-content: space-around;
-}
+  text-align: center;}
 ::-webkit-scrollbar {
   width: 2px;
   border-radius: 15px;
@@ -1231,9 +1313,10 @@ header{
   border-radius: 23px;
   background: #2977F6;
 }
-.images {
+.iamgss {
   display: flex;
   align-items: center;
+  padding: 20px 0;
 }
 .login{
   display: flex;
