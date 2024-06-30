@@ -1287,3 +1287,10 @@ window.onerror = function(message, source, lineno, colno, error) {
   // إعادة false لمنع ظهور رسالة الخطأ الافتراضية
   return false;
 };
+let logInbtn = document.getElementById('logInbtn')
+sinUpBtn.onclick = function () {
+ sinUp()
+}
+logInbtn.onclick = function() {
+  login()
+}
