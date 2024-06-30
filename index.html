@@ -3,8 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FUSION</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>fusIoN</title>
+  <!--manifest-->
+  <meta name="them-color" content="#2977F6">
+  <link rel="apple-touch-icon" href="/logo-192x192.png">
+  <link rel="manifest" href="/manifest.json">
   <!-- Google icons-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +25,12 @@
   <section class="over-lay">
   <span class="loader"></span>
 </section>
+  <section class="senah">
+   <span class="loader-senah loader"></span>
+   <div class="senah-msg">
+     <p>جاري الصاينه</p>
+   </div>
+  </section>
  <!-- head--> 
   <header class="header">
     <div class="sl">
@@ -532,7 +542,18 @@ upload
     </nav>
 
 <script  src="script.js" ></script>
-
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, (err) => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
+</script>
 </body>
 
 </html>

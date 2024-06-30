@@ -41,17 +41,17 @@ function gggu() {
 coment.style=`display :none;`;
 }
 let alerttte = document.getElementById('alertt');
-function alertt(msg,color) {
-  gggu()
-  alerttte.style=`display :flex;`
-infoAlertt.innerHTML = msg;
-infoAlertt.style = `color :${color};`;
 
-}
 window.addEventListener('mouseup',function (event) {
   gg();
 })
+function alertt(msg, color) {
+  gggu()
+  alerttte.style = `display :flex;`
+  infoAlertt.innerHTML = msg;
+  infoAlertt.style = `color :${color};`;
 
+}
 
 let  nameInput = 'unknown';
 
@@ -136,7 +136,16 @@ font - size: 30 px;background: #2977F6;
 logoMood = 'span';
   }
 }
-
+let senahMood = false;
+let senah = document.querySelector('.senah')
+function senahFunction() {
+  if (!senahMood) {
+    senah.style.display = "none";
+  }
+  else{
+  senah.style.display = "flex";
+  }
+}
 // show and hidden 
 function show(name,heght,allm) {
   name.style = `
@@ -353,7 +362,7 @@ console.log(date);
     clearInput();
     showPost();
   } else {
-    alertt('Element with id "narInp" not found or input value is empty.', "red");
+    alertt("Element with id 'narInp' not found or input value is empty.", "red");
   }
 };
 
@@ -1146,7 +1155,8 @@ function sinUp() {
     dateMontheSin.value.trim() !== '' &&
     dateDaySin.value.trim() !== '' &&
     passwordSin.value.trim() !== ''
-  ) {
+  )
+  {
     // الحصول على التاريخ الحالي
     let dateSinUpAll = new Date();
     let dateYear = dateSinUpAll.getFullYear();
@@ -1191,8 +1201,7 @@ function sinUp() {
       alertt("sorry "+sinUpName.value.trim() +". You can't enter to fusion. Because you are young. ","red")
     }
   } else {
-    alertt('Fill in all fields', 'red');
-  }
+    alertt('ااملا جميع الحقول','red');  }
 }
 function clearInluts() {
   sinUpName.value = '' ;
@@ -1263,11 +1272,6 @@ function trans() {
 
 */
 // التأكد من أن دالة alertt موجودة أو تعريفها إذا لم تكن موجودة
-if (typeof alertt !== 'function') {
-  function alertt(message, color) {
-    alert(message); // تنفيذ alert افتراضي، حيث أن alert لا يأخذ لون كمعامل
-  }
-}
 
 window.onerror = function(message, source, lineno, colno, error) {
   // عرض رسالة تنبيه عند حدوث خطأ
@@ -1294,3 +1298,8 @@ sinUpBtn.onclick = function () {
 logInbtn.onclick = function() {
   login()
 }
+senahMood = false;
+
+
+
+senahFunction();
