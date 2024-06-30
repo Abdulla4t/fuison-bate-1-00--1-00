@@ -1,14 +1,13 @@
 {
   "name": "Fuison",
   "short_name": "Fuison",
-  "scope":"/",
+  "scope": "/",
   "start_url": "/index.html",
   "orientation": "portrait",
-  "display":"standalone",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2977F6",
   "description": "Fuison is app like facebook",
-  "splash_pages":null,
   "icons": [
     {
       "src": "/logo-192x192.png",
@@ -19,11 +18,12 @@
       "src": "/logo-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }, {
-          "src": "/logo-maskable.png",
-          "sizes": "96×96",
-          "type": "image/png",
-          "purpose": "maskable"
-        }
+    },
+    {
+      "src": "/logo-maskable.png",
+      "sizes": "96×96",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
