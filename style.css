@@ -421,17 +421,15 @@ border-right: 4px #FFFFFF solid;
 border-left: 4px #FA0000 solid;
 
 }
-#narInp,#inputS,.search-initims input{
+.narinpc,#inputS,.search-initims input{
   height: 50px;
-  width: 400px !important;
-  border-radius:15px ;
-  outline: none;
-  border: 1px #000 solid;
-  padding :15px;
-  background: #f9f9f9;
-  margin-left:70px;
-  background:#EAEAEA; 
-  
+width: 400px !important;
+border-radius: 15px;
+outline: none;
+border: 1px #000 solid;
+padding: 15px;
+background: #EAEAEA;
+margin-left: 70px;
 }
 #inputS{
   width:550px;
