@@ -1,5 +1,4 @@
-let loding = document.querySelector(".over-lay");
-let body = document.querySelector(".body");
+
 let rightS = document.querySelector(".right-s")
 
 let menu = document.querySelector(".meno");
