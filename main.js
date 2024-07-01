@@ -1,4 +1,16 @@
+let body = document.querySelector(".body");
+let loding = document.querySelector(".over-lay");
+window.addEventListener("load", function() {
+  setTimeout(function() {
+    loding.style.transition = "opacity 1s";
+    loding.style.opacity = "0";
+    setTimeout(function() {
 
+      loding.style.display = "none";
+      body.style.overflow = "auto";
+    }, 2000);
+  }, 0);
+})
 let rightS = document.querySelector(".right-s")
 
 let menu = document.querySelector(".meno");

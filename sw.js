@@ -2,14 +2,18 @@
 const CACHE_NAME = 'my-pwa-cache-v1';
 const ASSETS_TO_CACHE = [
   '/',
+  '/main.js',
+  '/loding.js',
+  'logIn.js',
+  'swr.js',
+  'toPlasten.js',
+  '/manifest.json',
+  '/to-plasten.json',
   '/index.html',
   '/style.css',
-  '/script.js',
   '/logo.png',
-  '/manifest.json',
   '/pro1.jpeg',
   '/pro1.jpg',
-  '/to-plasten.json'
 ];
 
 // Install event: caching files
