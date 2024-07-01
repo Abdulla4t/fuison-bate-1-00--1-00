@@ -536,18 +536,6 @@ html, body {
   width: 100%;
 }
 
-.alert{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(0,0,0,0.4);
-  position: fixed; /* إضافة position: fixed لوضع العنصر في منتصف الشاشة دائما */
-  z-index: 999;
-  transition: .5s;
-  display: none; /* قم بإزالة هذه الخاصية إذا كنت تريد العرض فورًا */
-}
 
 .box {
   background :#fff;
@@ -1369,16 +1357,28 @@ margin: 5px 0;
 }
 .input-s{
   display: flex;
-align-items: center;
-justify-content: space-between;
-height: 50px;
-width: 400px;
-border-radius:15px;
-outline: none;
-border: 1px #000 solid;
-padding :15px;
-background: #f9f9f9;
-margin-left:70px;
-background:#EAEAEA;
-width:550px;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  width: 400px;
+  border-radius:15px;
+  outline: none;
+  border: 1px #000 solid;
+  padding :15px;
+  background: #f9f9f9;
+  margin-left:70px;
+  background:#EAEAEA;
+  width:550px;
+}
+.alert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,0.4);
+  position: fixed; /* إضافة position: fixed لوضع العنصر في منتصف الشاشة دائما */
+  z-index: 999;
+  transition: .5s;
+  display: none; /* قم بإزالة هذه الخاصية إذا كنت تريد العرض فورًا */
 }
