@@ -1,48 +1,48 @@
-let loding = document.querySelector('.over-lay');
-let body = document.querySelector('.body');
-window.addEventListener('load', function() {
+let loding = document.querySelector(".over-lay");
+let body = document.querySelector(".body");
+window.addEventListener("load", function() {
   setTimeout(function() {
-    loding.style.transition = 'opacity 1s';
-    loding.style.opacity = '0';
+    loding.style.transition = "opacity 1s";
+    loding.style.opacity = "0";
     setTimeout(function() {
 
-      loding.style.display = 'none';
-      body.style.overflow = 'auto';
+      loding.style.display = "none";
+      body.style.overflow = "auto";
     }, 2000);
   }, 0);
 })
-let rightS = document.querySelector('.right-s')
+let rightS = document.querySelector(".right-s")
 
-let menu = document.querySelector('.meno');
-let menuMood = 'open';
+let menu = document.querySelector(".meno");
+let menuMood = "open";
 function getMenuMood() {
-  if (menuMood == 'open') {
-    menuMood = 'close';
+  if (menuMood == "open") {
+    menuMood = "close";
     rightS .style =  `
     width:257.2px ;
 
     `;
-    menu.innerHTML = 'close';
+    menu.innerHTML = "close";
   }
   else {
-    menuMood = 'open';
+    menuMood = "open";
     rightS .style=  `
     width: 0;
     `;
-    menu.innerHTML = 'menu';
+    menu.innerHTML = "menu";
   }
 }
-let infoAlertt = document.getElementById('infoAlertt');
-let coment = document.querySelector('.coment');
+let infoAlertt = document.getElementById("infoAlertt");
+let coment = document.querySelector(".coment");
 function gg() {
   alerttte.style=`display :none;`
 }
 function gggu() {
 coment.style=`display :none;`;
 }
-let alerttte = document.getElementById('alertt');
+let alerttte = document.getElementById("alertt");
 
-window.addEventListener('mouseup',function (event) {
+window.addEventListener("mouseup",function (event) {
   gg();
 })
 function alertt(msg, color) {
@@ -53,56 +53,56 @@ function alertt(msg, color) {
 
 }
 
-let  nameInput = 'unknown';
+let  nameInput = "unknown";
 
 
-let proC = document.querySelector('.pro-c') ;
-proC.style.display = 'block';
-const colorconst = '2977F6';
+let proC = document.querySelector(".pro-c") ;
+proC.style.display = "block";
+const colorconst = "2977F6";
 // logo Variables
-let spanLogo = document.getElementById('span');
-let hh = document.getElementById('hh');
-let logoMood = 'sapn';
+let spanLogo = document.getElementById("span");
+let hh = document.getElementById("hh");
+let logoMood = "sapn";
 // show all Variables
-let showMood = 'show';
-let hab = document.querySelector('.hab');
-let showLll = document.getElementById('showAll'); 
+let showMood = "show";
+let hab = document.querySelector(".hab");
+let showLll = document.getElementById("showAll"); 
 
 // delet Variables
-let r1 = document.querySelector('.r1');
-let r2 = document.querySelector('.r2');
-let r3 = document.querySelector('.r3');
-let r4 = document.querySelector('.r4');
-let r5 = document.querySelector('.r5');
-let r6 = document.querySelector('.r6');
-let r7 = document.querySelector('.r7');
-let r8 = document.querySelector('.r8');
-let r9 = document.querySelector('.r9');
-let r10 = document.querySelector('.r10');
+let r1 = document.querySelector(".r1");
+let r2 = document.querySelector(".r2");
+let r3 = document.querySelector(".r3");
+let r4 = document.querySelector(".r4");
+let r5 = document.querySelector(".r5");
+let r6 = document.querySelector(".r6");
+let r7 = document.querySelector(".r7");
+let r8 = document.querySelector(".r8");
+let r9 = document.querySelector(".r9");
+let r10 = document.querySelector(".r10");
 
 // nav Variables
-let home = document.getElementById ('home');
-let book = document.getElementById ('book');3
-let videos = document.getElementById ('videos');
-let friends = document.getElementById ('friends');
-let n1 = document.getElementById ('n4');
-let n2 = document.getElementById ('n3');
-let n3 = document.getElementById ('n2');
-let n4 = document.getElementById ('n1');
-let n21 = document.getElementById ('n21');
-let n32 = document.getElementById ('n32');
-let n23 = document.getElementById ('n23');
-let n24 = document.getElementById ('n24');
+let home = document.getElementById ("home");
+let book = document.getElementById ("book");3
+let videos = document.getElementById ("videos");
+let friends = document.getElementById ("friends");
+let n1 = document.getElementById ("n4");
+let n2 = document.getElementById ("n3");
+let n3 = document.getElementById ("n2");
+let n4 = document.getElementById ("n1");
+let n21 = document.getElementById ("n21");
+let n32 = document.getElementById ("n32");
+let n23 = document.getElementById ("n23");
+let n24 = document.getElementById ("n24");
 
 // show more Variables
-let showAlot = document.getElementById ('showAlot');
-let showAlotMood = 'show';
-let nee = document.getElementById ('nee');
-let spanS = document.getElementById ('spanS');
+let showAlot = document.getElementById ("showAlot");
+let showAlotMood = "show";
+let nee = document.getElementById ("nee");
+let spanS = document.getElementById ("spanS");
 
 // logo
  function logo() {
-  if (logoMood == 'span') {
+  if (logoMood == "span") {
 spanLogo.style = `font-weight: 350;
 color: #333;
   transition: 0.8s;
@@ -117,7 +117,7 @@ hh.style = `background: #2977F6;
 transition: 0.8s;
 font-size: 30px;
 `;
-logoMood = 'h1';
+logoMood = "h1";
   }
   else {
 hh.style = `font - weight: 350;
@@ -133,11 +133,11 @@ spanLogo.style = `background: #2977F6;
 transition: 0.8 s;
 font - size: 30 px;background: #2977F6;
 `;
-logoMood = 'span';
+logoMood = "span";
   }
 }
 let senahMood = false;
-let senah = document.querySelector('.senah')
+let senah = document.querySelector(".senah")
 function senahFunction() {
   if (!senahMood) {
     senah.style.display = "none";
@@ -162,15 +162,15 @@ overflow-y: hidden;
 
 // showAll
 showLll.onclick = function() {
-if (showMood == 'show') {
-  show(hab,100,'%');
-  showLll.innerHTML = 'Hidden';
-  showMood = 'hidden';
+if (showMood == "show") {
+  show(hab,100,"%");
+  showLll.innerHTML = "Hidden";
+  showMood = "hidden";
 }
 else {
-hidden(hab,140,'px');
-showLll.innerHTML = 'Show All';
-showMood = 'show';
+hidden(hab,140,"px");
+showLll.innerHTML = "Show All";
+showMood = "show";
 } 
 
 }
@@ -272,34 +272,34 @@ function n44() {
   nav(n4, n2, n3, n1,n24,n32,n23,n21);
   disNav(book,videos,home,friends);
 }
-let spanSs = document.querySelector('spanS');
+let spanSs = document.querySelector("spanS");
 // showMore
 showAlot.onclick = function () {
-  if (showAlotMood == 'show') {
-        pS.innerHTML = 'show less'
+  if (showAlotMood == "show") {
+        pS.innerHTML = "show less"
     
-    show(nee,1119.9,'px');
-    showAlotMood = 'hidden';
+    show(nee,1119.9,"px");
+    showAlotMood = "hidden";
   }
   else {
-        pS.innerHTML = 'show more'
-   hidden(nee,690,'px');
-   showAlotMood = 'show';
+        pS.innerHTML = "show more"
+   hidden(nee,690,"px");
+   showAlotMood = "show";
 
   }
 }
 // like
-let likeMood = 'like';
+let likeMood = "like";
 
 function likee(i) {
-  if (likeMood == 'like') {
+  if (likeMood == "like") {
 posts[i].likes = ++likePosttt;
-    likeMood = 'dis';
+    likeMood = "dis";
 let numfavet = i;
  }
   else {
    posts[i].likes = --likePosttt;
-likeMood = 'like';
+likeMood = "like";
 }
 
 //  
@@ -307,20 +307,20 @@ likeMood = 'like';
   showPost();
   
   }
-let pluse = document.getElementById ('pluse');
+let pluse = document.getElementById ("pluse");
 //post 
 // save body post
 // coment
 let likePosttt = 1;
 let postIndex = -1;
-let posts = JSON.parse(localStorage.getItem('postN')) || [];
-let sendComentBtn = document.getElementById('sendComentBtn');
-let sendComent = document.getElementById('sendComent');
-let narInp = document.getElementById('narInp');
-let uploadbtn = document.getElementById('upload');
+let posts = JSON.parse(localStorage.getItem("postN")) || [];
+let sendComentBtn = document.getElementById("sendComentBtn");
+let sendComent = document.getElementById("sendComent");
+let narInp = document.getElementById("narInp");
+let uploadbtn = document.getElementById("upload");
 
 sendComentBtn.onclick = function() {
-  if (sendComent.value.trim() !== '') {
+  if (sendComent.value.trim() !== "") {
     let dateComent = new Date();
     let dateComentNow = dateComent.getFullYear() + "/" + (dateComent.getMonth() + 1) +  "/" + dateComent.getDate();
     let newComent = {
@@ -333,19 +333,19 @@ sendComentBtn.onclick = function() {
         posts[postIndex].coments = []; // Ensure the comments array exists
       }
       posts[postIndex].coments.push(newComent);
-      localStorage.setItem('postN', JSON.stringify(posts));
+      localStorage.setItem("postN", JSON.stringify(posts));
       showComent();
-      sendComent.value = '';
+      sendComent.value = "";
     } else {
-      console.log('No post selected for comment');
+      console.log("No post selected for comment");
     }
   } else {
-    console.log('Comment is empty');
+    console.log("Comment is empty");
   }
 };
 
 uploadbtn.onclick = function() {
-  if (narInp && narInp.value.trim() !== '') {
+  if (narInp && narInp.value.trim() !== "") {
     let now = new Date();
 let date = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
 console.log(date);
@@ -358,7 +358,7 @@ console.log(date);
     };
   
     posts.push(newPost);
-    localStorage.setItem('postN', JSON.stringify(posts));
+    localStorage.setItem("postN", JSON.stringify(posts));
     clearInput();
     showPost();
   } else {
@@ -367,8 +367,8 @@ console.log(date);
 };
 
 function showComent() {
-  let comentser = document.getElementById('comentser');
-  comentser.innerHTML = '';
+  let comentser = document.getElementById("comentser");
+  comentser.innerHTML = "";
 
   if (postIndex >= 0 && posts[postIndex].coments) {
     let storedComents = posts[postIndex].coments;
@@ -443,15 +443,15 @@ function showPost() {
       </div>
     `;
   }
-  document.getElementById('posts').innerHTML = postn;
+  document.getElementById("posts").innerHTML = postn;
 }
 function clearInput() {
-  narInp.value = '';
+  narInp.value = "";
 }
 
 function com(index) {
-  let coment = document.getElementById('coment');
-  let boxComent = document.querySelector('.box-coment');
+  let coment = document.getElementById("coment");
+  let boxComent = document.querySelector(".box-coment");
   coment.style = `transform:translateY(0%)`;
   boxComent.style = `transform:translateX(0%)`;
   postIndex = index;
@@ -459,62 +459,62 @@ function com(index) {
 }
 
 function ggg() {
-  let coment = document.getElementById('coment');
-  let boxComent = document.querySelector('.box-coment');
-  coment.style.transform = 'translateY(-100%)';
-  boxComent.style.transform = 'translateX(-100%)';
+  let coment = document.getElementById("coment");
+  let boxComent = document.querySelector(".box-coment");
+  coment.style.transform = "translateY(-100%)";
+  boxComent.style.transform = "translateX(-100%)";
   postIndex = -1; // Reset post index
 }
 // Call showPost on page load to display existing posts
 showPost();
 //delete 
 function deletPostt(i) {
-  let passwordDelete = prompt('enter password delete')
-if (passwordDelete.trim() == 'd-post-1') {
-  alertt('done✅✔✅✔','#31FF4B');
+  let passwordDelete = prompt("enter password delete")
+if (passwordDelete.trim() == "d-post-1") {
+  alertt("done✅✔✅✔","#31FF4B");
   posts.splice(i);
   localStorage.postN = JSON.stringify(posts);
   showPost()
   console.log(i)
 }
   else {
-    alertt('اعتذر يا مستخدم يمكن لل مطور فقط حذف اي منشور.لكن ان كنت تريد ان تحذف اي منشو كلمي علي الوتس علي الرقم ده { 01501480908 }.','red')
+    alertt("اعتذر يا مستخدم يمكن لل مطور فقط حذف اي منشور.لكن ان كنت تريد ان تحذف اي منشو كلمي علي الوتس علي الرقم ده { 01501480908 }.","red")
   }
 }
 
 // Variables dark mood
-let infoAlert = document.querySelector('.info-alert');
-let alerte = document.getElementById('alertt');
-let pMoodWeb = document.querySelector('.pMoodWeb');
-let buttonMoodWeb = document.querySelector('.buttonMoodWeb');
-let header = document.querySelector('.header');
-let searchIcon = document.querySelector('.search-icon');
-let seach = document.getElementById('seach');
-let logoe = document.querySelector('.logo');
-let naveev = document.querySelector('.naveev');
+let infoAlert = document.querySelector(".info-alert");
+let alerte = document.getElementById("alertt");
+let pMoodWeb = document.querySelector(".pMoodWeb");
+let buttonMoodWeb = document.querySelector(".buttonMoodWeb");
+let header = document.querySelector(".header");
+let searchIcon = document.querySelector(".search-icon");
+let seach = document.getElementById("seach");
+let logoe = document.querySelector(".logo");
+let naveev = document.querySelector(".naveev");
 
-let pp = document.querySelectorAll('.pp');
-let containerq = document.querySelectorAll('.containerq');
-let infoo = document.querySelector('.infoo');
-let infooo = document.querySelector('.infooo');
-let infoooo = document.querySelector('.infoooo');
-let w = document.querySelectorAll('.w');
-let shoog = document.querySelector('.shoog');
-let rrt = document.querySelector('.rrt');
-let rrrt = document.querySelector('.rrrt');
-let rrrtf = document.querySelector('.rrrtf');
-let rrrrt = document.querySelector('.rrrrt');
-let rrrrrt = document.querySelector('.rrrrrt');
-let leftS = document.querySelector('.left-s')
+let pp = document.querySelectorAll(".pp");
+let containerq = document.querySelectorAll(".containerq");
+let infoo = document.querySelector(".infoo");
+let infooo = document.querySelector(".infooo");
+let infoooo = document.querySelector(".infoooo");
+let w = document.querySelectorAll(".w");
+let shoog = document.querySelector(".shoog");
+let rrt = document.querySelector(".rrt");
+let rrrt = document.querySelector(".rrrt");
+let rrrtf = document.querySelector(".rrrtf");
+let rrrrt = document.querySelector(".rrrrt");
+let rrrrrt = document.querySelector(".rrrrrt");
+let leftS = document.querySelector(".left-s")
 
-let webMood = 'dark';
-let darMood = 'dark';
-let box = document.querySelector('.box');
-let boxComent = document.querySelector('.box-coment');
-let pi = document.getElementById('pi');
+let webMood = "dark";
+let darMood = "dark";
+let box = document.querySelector(".box");
+let boxComent = document.querySelector(".box-coment");
+let pi = document.getElementById("pi");
 function darkk() {
-  leftS.style.background = '#333';
-  leftS.style.color = '#f1f1f1';
+  leftS.style.background = "#333";
+  leftS.style.color = "#f1f1f1";
 pi.style = `
      color:#fff;
      background :#6C6C6C;
@@ -533,20 +533,20 @@ box.style = `background :#111;`;
 body.style = `background:#333;`;
 shoog.onclick = function () {
 shoog.style=` color:#8167FF;`
-if (showMood == 'show') {
-show(hab,100,'%');
-showLll.innerHTML = 'Hidden';
-showMood = 'hidden';
+if (showMood == "show") {
+show(hab,100,"%");
+showLll.innerHTML = "Hidden";
+showMood = "hidden";
 }
 else {
-hidden(hab,140,'px');
-showLll.innerHTML = 'Show All';
-showMood = 'show';
+hidden(hab,140,"px");
+showLll.innerHTML = "Show All";
+showMood = "show";
 }
 
 }
 w.style =`color:#B6B6B6;`;
-document.querySelector('.navbar').style.background = "#222";
+document.querySelector(".navbar").style.background = "#222";
 infoo.style = `color:#D5D5D5;`;
 infooo.style = `color:#D5D5D5;`;
 infoooo.style = `color:#D5D5D5;`;
@@ -609,7 +609,7 @@ searchIcon.style = `background: #777;
 color: #fff;`
 }
 logoe.onclick = function () {
-if (logoMood == 'span') {
+if (logoMood == "span") {
 spanLogo.style = `font-weight: 350;
 color: #f1f1f1;
 transition: 0.8s;
@@ -624,7 +624,7 @@ color: #f1f1f1;
 transition: 0.8s;
 font-size: 30px;
 `;
-logoMood = 'h1';
+logoMood = "h1";
 
 }
 else {
@@ -642,15 +642,15 @@ color: #f1f1f1;
 transition: 0.8s;
 font-size: 30px;background: #236DE5;
 `;
-logoMood = 'span';
+logoMood = "span";
 }
 }
 
 }
 function lightt() {
-  leftS.style.background = '#f1f1f1';
-  leftS.style.color = '#000';
-  document.querySelector('.navbar').style.background = "#fff";
+  leftS.style.background = "#f1f1f1";
+  leftS.style.color = "#000";
+  document.querySelector(".navbar").style.background = "#fff";
 rrt.style = `background :#f0f0f0;
 color:#fff;
 `
@@ -665,15 +665,15 @@ color:#fff;
 `
 shoog.onclick = function() {
 shoog.style = ` color:#092AB5;`
-if (showMood == 'show') {
-show(hab, 100, '%');
-showLll.innerHTML = 'Hidden';
-showMood = 'hidden';
+if (showMood == "show") {
+show(hab, 100, "%");
+showLll.innerHTML = "Hidden";
+showMood = "hidden";
 }
 else {
-hidden(hab, 140, 'px');
-showLll.innerHTML = 'Show All';
-showMood = 'show';
+hidden(hab, 140, "px");
+showLll.innerHTML = "Show All";
+showMood = "show";
 }
 
 }
@@ -714,7 +714,7 @@ searchIcon.style = `background: #f9f9f9;
 color: #555;`
 }
 logoe.onclick = function() {
-if (logoMood == 'span') {
+if (logoMood == "span") {
 spanLogo.style = `font-weight: 350;
 color: #333;
 transition: 0.8s;
@@ -729,7 +729,7 @@ color: #f1f1f1;
 transition: 0.8s;
 font-size: 30px;
 `;
-logoMood = 'h1';
+logoMood = "h1";
 }
 else {
 hh.style = `font - weight: 350;
@@ -746,7 +746,7 @@ transition: 0.8 s;
 font - size: 30 px;background: #2977F6;
 `;
 
-logoMood = 'span';
+logoMood = "span";
 }
 pi.style = `
      color:#000;
@@ -763,28 +763,28 @@ box.style = `background :#fff;`; body.style = `background :#f1f1f1;`;infoAlert.s
 
 }
 
-let isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+let isDarkMode = localStorage.getItem("isDarkMode") === "true";
 
 function toggleMode() {
   if (isDarkMode) {
     // استدعاء دالة الضوء
     lightt();
     isDarkMode = false;
-    buttonMoodWeb.innerHTML = 'dark_mode';
-    pMoodWeb.innerHTML = 'Dark Mood';
-    pi.innerHTML = 'dark_mode';
+    buttonMoodWeb.innerHTML = "dark_mode";
+    pMoodWeb.innerHTML = "Dark Mood";
+    pi.innerHTML = "dark_mode";
     
   } else {
     // استدعاء دالة الظلام
     darkk();
     isDarkMode = true;
-    buttonMoodWeb.innerHTML = 'light_mode';
-    pMoodWeb.innerHTML = 'Light Mood';
-    pi.innerHTML = 'light_mode';
+    buttonMoodWeb.innerHTML = "light_mode";
+    pMoodWeb.innerHTML = "Light Mood";
+    pi.innerHTML = "light_mode";
     
   }
   // حفظ الحالة في Local Storage
-  localStorage.setItem('isDarkMode', isDarkMode);
+  localStorage.setItem("isDarkMode", isDarkMode);
 }
 
 // استعادة الحالة عند تحميل الصفحة
@@ -792,41 +792,41 @@ window.onload = function() {
   n11()
   if (isDarkMode) {
     darkk();
-    buttonMoodWeb.innerHTML = 'light_mode';
-    pMoodWeb.innerHTML = 'Light Mood';
-    pi.innerHTML = 'light_mode';
+    buttonMoodWeb.innerHTML = "light_mode";
+    pMoodWeb.innerHTML = "Light Mood";
+    pi.innerHTML = "light_mode";
   } else {
     lightt();
-    buttonMoodWeb.innerHTML = 'dark_mode';
-    pMoodWeb.innerHTML = 'Dark Mood';
-    pi.innerHTML = 'dark_mode';
+    buttonMoodWeb.innerHTML = "dark_mode";
+    pMoodWeb.innerHTML = "Dark Mood";
+    pi.innerHTML = "dark_mode";
   }
 };
 
 n11();
 let xDatep ;
 let xReq = new XMLHttpRequest();
-xReq.open('GET', 'to-plasten.json', true);
+xReq.open("GET", "to-plasten.json", true);
 xReq.onload = function() {
   if (xReq.status === 200) {
      xDatep = JSON.parse(xReq.responseText);
     
   } else {
-    console.error('Error', xReq.status, xReq.statusText);
+    console.error("Error", xReq.status, xReq.statusText);
   }
 };
 xReq.onerror = function() {
-  console.error('Request failed');
+  console.error("Request failed");
 };
 
 xReq.send();
 function toPlasten() {
   n33()
-  let numForPlasten = prompt('اكتب اسم المنتج الذي تريد الاستفسار عنه').trim();
+  let numForPlasten = prompt("اكتب اسم المنتج الذي تريد الاستفسار عنه").trim();
 
   
   if (!numForPlasten) {
-    alertt('الرجاء إدخال قيمة صحيحة.','red');
+    alertt("الرجاء إدخال قيمة صحيحة.","red");
     return;
   }
   console.table(xDatep);
@@ -835,65 +835,65 @@ function toPlasten() {
   for (let i = 0; i < xDatep.length; i++) {
     
     if (numForPlasten.toLocaleLowerCase() === xDatep[i]) {
-      alertt('🇮🇱🇮🇱 مقاطعه '+ numForPlasten.trim() + ' 🇮🇱🇮🇱', 'red');
+      alertt("🇮🇱🇮🇱 مقاطعه "+ numForPlasten.trim() + " 🇮🇱🇮🇱", "red");
       found = true;
       break; // توقف البحث إذا تم العثور على العنصر
     }
   }
   if (!found) { 
-    alertt('🇵🇸🇵🇸  ليس من قائمة المقاطعه ' + numForPlasten.trim() + ' 🇵🇸🇵🇸', '#31FF4B');
+    alertt("🇵🇸🇵🇸  ليس من قائمة المقاطعه " + numForPlasten.trim() + " 🇵🇸🇵🇸", "#31FF4B");
     }
 }
 function toPlastent() {
-  let inpSI = document.getElementById('inpSI').value.trim().toLowerCase();
-  let monm = document.querySelector('.monm');
-  let monmP = document.querySelector('.momnm-p');
+  let inpSI = document.getElementById("inpSI").value.trim().toLowerCase();
+  let monm = document.querySelector(".monm");
+  let monmP = document.querySelector(".momnm-p");
 
-  if (inpSI === '') {
-    monm.style.color = 'red';
-    monmP.innerHTML = 'الرجاء ادخال قيمة';
+  if (inpSI === "") {
+    monm.style.color = "red";
+    monmP.innerHTML = "الرجاء ادخال قيمة";
   } else {
     let found = false;
     for (let i = 0; i < xDatep.length; i++) {
       if (inpSI === xDatep[i]) {
-        monm.style.color = 'red';
-        monmP.innerHTML = 'مقاطع';
+        monm.style.color = "red";
+        monmP.innerHTML = "مقاطع";
         found = true;
         break; // توقف البحث إذا تم العثور على العنصر
       }
     }
     if (!found) {
-      monm.style.color = '#31FF4B'; // تأكد من استخدام قيمة اللون الصحيحة
-      monmP.innerHTML = 'المنتج ليس في قائمة المقاطعة';
+      monm.style.color = "#31FF4B"; // تأكد من استخدام قيمة اللون الصحيحة
+      monmP.innerHTML = "المنتج ليس في قائمة المقاطعة";
     }
   }
 }
 function likeLoad() {
-  likeMood = 'like'
+  likeMood = "like"
 }
 // search 
 
- let searchMood = 'opject';
- let inputSs = document.getElementById('inputSs')
+ let searchMood = "opject";
+ let inputSs = document.getElementById("inputSs")
  function getSearchMood(id) {
-  if (id == 'byOpject') {
-    searchMood = 'opject';
-    inputSs.placeholder = 'Search by opject'
+  if (id == "byOpject") {
+    searchMood = "opject";
+    inputSs.placeholder = "Search by opject"
   }
   else{
-    inputSs.placeholder = 'Search by name'
-    searchMood = 'name';
+    inputSs.placeholder = "Search by name"
+    searchMood = "name";
   }
 searchere(inputSs.value)
  }
  
  
 // search in header
-let seachInput = document.getElementById('seach').value;
+let seachInput = document.getElementById("seach").value;
 
 function searcher(value) {
-  let postn = '';
-  let postne = '';
+  let postn = "";
+  let postne = "";
   let found = false;
   for (let i = posts.length - 1; i >= 0; i--) {
   if (posts[i] && posts[i].name && posts[i].name.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase())) {
@@ -981,23 +981,23 @@ function searcher(value) {
   }
 
   if (found) {
-    document.getElementById('posts').innerHTML = postn;
+    document.getElementById("posts").innerHTML = postn;
   } else {
     postne = `
       <div class="error-searchd">
         <p class="error-search">No results :(</p>
       </div>
     `;
-    document.getElementById('posts').innerHTML = postne;
+    document.getElementById("posts").innerHTML = postne;
   }
 }
 function searchere(value) {
-  let searchPost = '';
+  let searchPost = "";
   let found = false;
 
-  if (searchMood === 'name') {
+  if (searchMood === "name") {
     for (let i = posts.length - 1; i >= 0; i--) {
-      if (posts[i] && posts[i].name && posts[i].name.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase())&&value.trim().toLocaleLowerCase()!== '') {
+      if (posts[i] && posts[i].name && posts[i].name.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase())&&value.trim().toLocaleLowerCase()!== "") {
         found = true;
         searchPost += `
       <div class="nasher post">
@@ -1034,19 +1034,19 @@ function searchere(value) {
     }
 
     if (found) {
-      document.getElementById('postsSsearch').innerHTML = searchPost;
+      document.getElementById("postsSsearch").innerHTML = searchPost;
     } else {
       searchPost = `
         <div class="error-searchd">
           <p class="error-search">No results :(</p>
         </div>
       `;
-      document.getElementById('postsSsearch').innerHTML = searchPost;
+      document.getElementById("postsSsearch").innerHTML = searchPost;
     }
     
   } else {
     for (let i = posts.length - 1; i >= 0; i--) {
-      if (posts[i] && posts[i].bodyPost && posts[i].bodyPost.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase()) && value.trim().toLocaleLowerCase() !== '') {
+      if (posts[i] && posts[i].bodyPost && posts[i].bodyPost.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase()) && value.trim().toLocaleLowerCase() !== "") {
         found = true;
         searchPost += `
       <div class="nasher post">
@@ -1083,14 +1083,14 @@ function searchere(value) {
     }
 
     if (found) {
-      document.getElementById('postsSsearch').innerHTML = searchPost;
+      document.getElementById("postsSsearch").innerHTML = searchPost;
     } else {
       searchPost = `
         <div class="error-searchd">
           <p class="error-search">No results :(</p>
         </div>
       `;
-      document.getElementById('postsSsearch').innerHTML = searchPost;
+      document.getElementById("postsSsearch").innerHTML = searchPost;
     }  }
 }
 
@@ -1098,34 +1098,34 @@ function searchere(value) {
 
                 
 function openSearch() {
-  document.querySelector('.search-icon').style = `display:none;`;
-  document.getElementById('seach').style = `display:flex;`
+  document.querySelector(".search-icon").style = `display:none;`;
+  document.getElementById("seach").style = `display:flex;`
   
 }                
-let checkPassword = document.getElementById('checkPassword');
-let checkPasswordLog = document.getElementById('checkPasswordLog');
-let passwordSin = document.getElementById('passwordSin');
-let passwordLog = document.getElementById('passwordLog');
+let checkPassword = document.getElementById("checkPassword");
+let checkPasswordLog = document.getElementById("checkPasswordLog");
+let passwordSin = document.getElementById("passwordSin");
+let passwordLog = document.getElementById("passwordLog");
 
 checkPasswordLog.onclick = function() {
   if (checkPasswordLog.checked) {
-    passwordLog.type = 'text';
+    passwordLog.type = "text";
   } else {
-    passwordLog.type = 'password';
+    passwordLog.type = "password";
   }
 }
 
 checkPassword.onclick = function() {
   if (checkPassword.checked) {
-    passwordSin.type = 'text';
+    passwordSin.type = "text";
   } else {
-    passwordSin.type = 'password';
+    passwordSin.type = "password";
   }
 }
-let sinLog = document.getElementById('sinLog');
-let logSin = document.getElementById('logSin');
-let log = document.querySelector('.log');
-let sin = document.querySelector('.sin');
+let sinLog = document.getElementById("sinLog");
+let logSin = document.getElementById("logSin");
+let log = document.querySelector(".log");
+let sin = document.querySelector(".sin");
 sinLog.onclick  = function () {
   sin.style = `display:none;`
   log.style = `display:flex;`
@@ -1138,23 +1138,23 @@ logSin.onclick  = function () {
 //[sinUpName,sinUpEmail,dateYearSin,dateMontheSin,dateDaySin,passwordSin]
 
 // sin  up 
-let sinUpBtn = document.getElementById('sinUpBtn');
+let sinUpBtn = document.getElementById("sinUpBtn");
 
-let sinUpEmail = document.getElementById('sinUpEmail');
-let sinUpName = document.getElementById('sinUpName');
-let dateYearSin = document.getElementById('dateYearSin');
-let dateMontheSin = document.getElementById('dateMontheSin');
-let dateDaySin = document.getElementById('dateDaySin');
+let sinUpEmail = document.getElementById("sinUpEmail");
+let sinUpName = document.getElementById("sinUpName");
+let dateYearSin = document.getElementById("dateYearSin");
+let dateMontheSin = document.getElementById("dateMontheSin");
+let dateDaySin = document.getElementById("dateDaySin");
 
-let users = JSON.parse(localStorage.getItem('usersv')) || [];
+let users = JSON.parse(localStorage.getItem("usersv")) || [];
 function sinUp() {
   if (
-    sinUpName.value.trim() !== '' &&
-    sinUpEmail.value.trim() !== '' &&
-    dateYearSin.value.trim() !== '' &&
-    dateMontheSin.value.trim() !== '' &&
-    dateDaySin.value.trim() !== '' &&
-    passwordSin.value.trim() !== ''
+    sinUpName.value.trim() !== "" &&
+    sinUpEmail.value.trim() !== "" &&
+    dateYearSin.value.trim() !== "" &&
+    dateMontheSin.value.trim() !== "" &&
+    dateDaySin.value.trim() !== "" &&
+    passwordSin.value.trim() !== ""
   )
   {
     // الحصول على التاريخ الحالي
@@ -1179,7 +1179,7 @@ function sinUp() {
       for (var i = 0; i < users.length; i++) {
         if (sinUpName.value.trim() === users[i].name  || sinUpEmail.value.trim() === users[i].phone) {
           foundUser = true;
-          alertt('Sorry, this user already exists ','red')
+          alertt("Sorry, this user already exists ","red")
         }
       }
       if (foundUser == false) {
@@ -1191,33 +1191,33 @@ function sinUp() {
       users.push(user);
 
       console.log(users)
-      localStorage.setItem('usersv', JSON.stringify(users));
+      localStorage.setItem("usersv", JSON.stringify(users));
       nameInput = sinUpName.value.trim();
       clearInluts();
       showApp();
-     alertt('An account has been created','#31FF4B')
+     alertt("An account has been created","#31FF4B")
       }
     } else {
       alertt("sorry "+sinUpName.value.trim() +". You can't enter to fusion. Because you are young. ","red")
     }
   } else {
-    alertt('ااملا جميع الحقول','red');  }
+    alertt("ااملا جميع الحقول","red");  }
 }
 function clearInluts() {
-  sinUpName.value = '' ;
-  sinUpEmail.value = '' ;
-  dateYearSin.value = '' ;
-  dateMontheSin.value = '' ; 
-  dateDaySin.value = '' ;
-  passwordSin.value = '';
+  sinUpName.value = "" ;
+  sinUpEmail.value = "" ;
+  dateYearSin.value = "" ;
+  dateMontheSin.value = "" ; 
+  dateDaySin.value = "" ;
+  passwordSin.value = "";
 }
 function showApp() {
-  document.querySelector('.login').style = `display:none `;
-  document.querySelector('.navbar').style= `display:flex `;
+  document.querySelector(".login").style = `display:none `;
+  document.querySelector(".navbar").style= `display:flex `;
 }
-let nameLog = document.getElementById('nameLog')
+let nameLog = document.getElementById("nameLog")
 function login() {
-  if (passwordLog.value.trim().toLocaleLowerCase() !== '' && nameLog.value.trim().toLocaleLowerCase() !== '') {
+  if (passwordLog.value.trim().toLocaleLowerCase() !== "" && nameLog.value.trim().toLocaleLowerCase() !== "") {
     
   
  let userLogin = false;
@@ -1229,30 +1229,30 @@ function login() {
    }
    else if(passwordLog.value.trim().toLocaleLowerCase() !== users[i].password.toLocaleLowerCase()  && nameLog.value.trim().toLocaleLowerCase() 
    !== users[i].phone.toLocaleLowerCase()){
-     alertt('The password and (email or phone number) are incorrect','red')
+     alertt("The password and (email or phone number) are incorrect","red")
    }
    else if (nameLog.value.trim().toLocaleLowerCase() !==
   users[i].phone.toLocaleLowerCase()) {
-     alertt('Invalid email or phone number','red')
+     alertt("Invalid email or phone number","red")
    }
    else if(passwordLog.value.trim().toLocaleLowerCase() !==
   users[i].phone.toLocaleLowerCase()){
-    alertt('Password error','red')
+    alertt("Password error","red")
    }
  }
  if (userLogin == true) {
-   alertt('You are logged in','#31FF4B')
+   alertt("You are logged in","#31FF4B")
    showApp()
  }
  }
-  else if(passwordLog.value.trim().toLocaleLowerCase() === '' && nameLog.value.trim().toLocaleLowerCase() === '') {
-   alertt('Fill in the field (email or phone number) and password','red');
+  else if(passwordLog.value.trim().toLocaleLowerCase() === "" && nameLog.value.trim().toLocaleLowerCase() === "") {
+   alertt("Fill in the field (email or phone number) and password","red");
  }
- else if (nameLog.value.trim().toLocaleLowerCase() === '') {
-  alertt('Fill in the field (email or phone number)', 'red');
+ else if (nameLog.value.trim().toLocaleLowerCase() === "") {
+  alertt("Fill in the field (email or phone number)", "red");
 }
-else if (passwordLog.value.trim().toLocaleLowerCase() === '') {
-  alertt('Fill in the field password', 'red');
+else if (passwordLog.value.trim().toLocaleLowerCase() === "") {
+  alertt("Fill in the field password", "red");
 }
 }
 
@@ -1260,12 +1260,12 @@ else if (passwordLog.value.trim().toLocaleLowerCase() === '') {
 
 
 
-/*let valuelange = 'en';
+/*let valuelange = "en";
 function trans() {
-  if (valuelange === 'en') {
-    valuelange = 'ar';
+  if (valuelange === "en") {
+    valuelange = "ar";
   } else {
-    valuelange = 'en';
+    valuelange = "en";
   }
   console.log(valuelange);
 }
@@ -1275,7 +1275,7 @@ function trans() {
 
 window.onerror = function(message, source, lineno, colno, error) {
   // عرض رسالة تنبيه عند حدوث خطأ
-  alertt("):حدث خطأ، سوف يتم إعادة تحميل الموقع " + error, 'red');
+  alertt("):حدث خطأ، سوف يتم إعادة تحميل الموقع " + error, "red");
 
   // تعيين حدث النقر على الزر .btn-info لإعادة تحميل الصفحة
   var reloadButton = document.querySelector(".btn-info");
@@ -1291,7 +1291,7 @@ window.onerror = function(message, source, lineno, colno, error) {
   // إعادة false لمنع ظهور رسالة الخطأ الافتراضية
   return false;
 };
-let logInbtn = document.getElementById('logInbtn')
+let logInbtn = document.getElementById("logInbtn")
 sinUpBtn.onclick = function () {
  sinUp()
 }
@@ -1299,7 +1299,6 @@ logInbtn.onclick = function() {
   login()
 }
 senahMood = false;
-
 
 
 senahFunction();
