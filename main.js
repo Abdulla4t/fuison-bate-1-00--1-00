@@ -135,17 +135,8 @@ font - size: 30 px;background: #2977F6;
 `;
 logoMood = "span";
   }
-}
-let senahMood = false;
-let senah = document.querySelector(".senah")
-function senahFunction() {
-  if (!senahMood) {
-    senah.style.display = "none";
-  }
-  else{
-  senah.style.display = "flex";
-  }
-}
+}/*
+*/
 // show and hidden 
 function show(name,heght,allm) {
   name.style = `
@@ -1077,7 +1068,3 @@ sinUpBtn.onclick = function () {
 logInbtn.onclick = function() {
   login()
 }
-senahMood = false;
-
-
-senahFunction();
