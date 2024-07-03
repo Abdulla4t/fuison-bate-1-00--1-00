@@ -302,15 +302,7 @@ let pluse = document.getElementById ("pluse");
 //post 
 // save body post
 // coment
-let likePosttt = 1;
-let postIndex = -1;
-let posts = [];
-let sendComentBtn = document.getElementById("sendComentBtn");
-let sendComent = document.getElementById("sendComent");
-let narInp = document.getElementById("narInp");
-let uploadbtn = document.getElementById("upload");
-// Your web app's Firebase configuration
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBwYJKxTTfl4ScDtz_f0VSAW_z2xL-vAVk",
   authDomain: "fusion-ecf12.firebaseapp.com",
@@ -326,7 +318,6 @@ firebase.initializeApp(firebaseConfig);
 
 // Initialize Firestore
 const db = firebase.firestore();
-
 sendComentBtn.onclick = function() {
   if (sendComent.value.trim() !== "") {
     let dateComent = new Date();
@@ -499,20 +490,14 @@ function com(index) {
 }
 
 function deletePost(postId) {
-  let passwordD = prompt('enter delet passord')
-  if (passwordD == "d-post-1") {
-      db.collection("posts").doc(postId).delete()
-      .then(() => {
-        console.log("Document successfully deleted!");
-        fetchPosts();
-      })
-      .catch((error) => {
-        console.error("Error removing document: ", error);
-      });
-  }
-  else {
-    alertt('sorry delet passord is not true')
-  }
+  db.collection("posts").doc(postId).delete()
+    .then(() => {
+      console.log("Document successfully deleted!");
+      fetchPosts();
+    })
+    .catch((error) => {
+      console.error("Error removing document: ", error);
+    });
 }
 function ggg() {
   let coment = document.getElementById("coment");
