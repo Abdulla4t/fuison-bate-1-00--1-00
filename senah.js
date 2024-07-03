@@ -8,7 +8,8 @@ function senahFunction() {
   senah.style.display = "flex";
   }
 }
- 
 
-senahMoodif = false;
+
+
+senahMood = false;
 senahFunction();

@@ -302,36 +302,22 @@ let pluse = document.getElementById ("pluse");
 //post 
 // save body post
 // coment
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBwYJKxTTfl4ScDtz_f0VSAW_z2xL-vAVk",
-  authDomain: "fusion-ecf12.firebaseapp.com",
-  projectId: "fusion-ecf12",
-  storageBucket: "fusion-ecf12.appspot.com",
-  messagingSenderId: "115822790505",
-  appId: "1:115822790505:web:fa3a46ffa48b44d0c41ff8",
-  measurementId: "G-NSR4H6EGH1"
-};
-  
-  
-  
-  
-  
-  
-  
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+let likePosttt = 1;
+let postIndex = -1;
+let posts = JSON.parse(localStorage.getItem("postN")) || [];
+let sendComentBtn = document.getElementById("sendComentBtn");
+let sendComent = document.getElementById("sendComent");
+let narInp = document.getElementById("narInp");
+let uploadbtn = document.getElementById("upload");
 
-// Initialize Firestore
-const db = firebase.firestore();
 sendComentBtn.onclick = function() {
   if (sendComent.value.trim() !== "") {
     let dateComent = new Date();
-    let dateComentNow = dateComent.getFullYear() + "/" + (dateComent.getMonth() + 1) + "/" + dateComent.getDate();
+    let dateComentNow = dateComent.getFullYear() + "/" + (dateComent.getMonth() + 1) +  "/" + dateComent.getDate();
     let newComent = {
       bodyComent: sendComent.value,
       nameComent: nameInput,
-      datecoment: dateComentNow,
+      datecoment:dateComentNow,
     };
     if (postIndex >= 0) {
       if (!posts[postIndex].coments) {
@@ -352,27 +338,20 @@ sendComentBtn.onclick = function() {
 uploadbtn.onclick = function() {
   if (narInp && narInp.value.trim() !== "") {
     let now = new Date();
-    let date = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
-    console.log(date);
+let date = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
+console.log(date);
     let newPost = {
       bodyPost: narInp.value,
       name: nameInput,
-      likes: 0,
-      date: date,
+      likes: likePosttt,
+      date:date,
       coments: [],
     };
-
-    db.collection("posts").add(newPost)
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-        // تحديث المنشورات بعد إضافة منشور جديد
-        fetchPosts();
-      })
-      .catch((error) => {
-        console.error("Error adding document: ", error);
-      });
-
+  
+    posts.push(newPost);
+    localStorage.setItem("postN", JSON.stringify(posts));
     clearInput();
+    showPost();
   } else {
     alertt("Element with id 'narInp' not found or input value is empty.", "red");
   }
@@ -401,75 +380,51 @@ function showComent() {
             </div>
           </div>`;
         comentser.innerHTML += comentHTML;
+        
       }
     }
   } else {
     comentser.innerHTML = '<p class = "p-nan">لا يوجد تعليقات كون اول من يعلق</p>';
   }
+  showPost();
 }
 
 let comentsLength;
-// دالة لاسترجاع المنشورات ووضعها في المصفوفة
-function fetchPosts() {
-  db.collection("posts").get().then((querySnapshot) => {
-      posts = []; // نعيد تعيين المصفوفة لتفادي تكرار البيانات
-
-      if (querySnapshot.empty) {
-        console.log("No posts found");
-      } else {
-        const docs = querySnapshot.docs;
-        for (let i = 0; i < docs.length; i++) {
-          let postData = docs[i].data();
-          postData.id = docs[i].id; // إضافة معرّف الوثيقة إلى البيانات
-          posts.push(postData);
-        }
-      }
-
-      // عرض المنشورات على واجهة المستخدم (اختياري)
-      showPost(posts);
-    })
-    .catch((error) => {
-      console.error("Error fetching documents: ", error);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  fetchPosts();
-});
-
-function showPost(posts) {
+function showPost() {
   let postn = "";
   for (let i = posts.length - 1; i >= 0; i--) {
-    comentsLength = posts[i].coments ? posts[i].coments.length : 0;
+     comentsLength = posts[i].coments ? posts[i].coments.length : 0;
     postn += `
       <div class="nasher post">
-        <div class="head-post">
-          <div class="date-info">
-            <p class="date">${posts[i].date}</p>
-            <p class="material-symbols-outlined date-icon">calendar_month</p>
-          </div>
-          <div class="pro-post">
-            <p>${posts[i].name}</p>
-            <img class="pro-c" src="pro1.jpeg" alt="">
-          </div>
+      <div class = "head-post">
+      <div class = "date-info">
+      <p class = "date">${posts[i].date}</p>
+      <p class = "material-symbols-outlined date-icon">calendar_month</p>
+      </div>
+        <div class="pro-post">
+          <p>${posts[i].name}</p>
+          <img class="pro-c" src = "pro1.jpeg" alt="">
+        </div>
         </div>
         <div class="post-info">
           <p>${posts[i].bodyPost}</p>
         </div>
         <div class="chosesec">
-          <div class="upload like choke" onclick="deletePost('${posts[i].id}')">
+
+          <div class="upload like choke" onclick="deletPostt(${i})">
             <button id="deleteee" class="likee deleteee chokee">
               <p>delete</p>
               <span id="spanS" class="material-symbols-outlined">delete</span>
             </button>
           </div>
+
           <div class="upload like choke" onclick="com(${i})">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${comentsLength}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
             </button>
           </div>
-          <div class="upload like choke" onclick="likee(${i})">
+                    <div class="upload like choke" onclick="likee(${i})">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${posts[i].likes}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
@@ -481,7 +436,6 @@ function showPost(posts) {
   }
   document.getElementById("posts").innerHTML = postn;
 }
-
 function clearInput() {
   narInp.value = "";
 }
@@ -495,16 +449,6 @@ function com(index) {
   showComent();
 }
 
-function deletePost(postId) {
-  db.collection("posts").doc(postId).delete()
-    .then(() => {
-      console.log("Document successfully deleted!");
-      fetchPosts();
-    })
-    .catch((error) => {
-      console.error("Error removing document: ", error);
-    });
-}
 function ggg() {
   let coment = document.getElementById("coment");
   let boxComent = document.querySelector(".box-coment");
@@ -513,7 +457,21 @@ function ggg() {
   postIndex = -1; // Reset post index
 }
 // Call showPost on page load to display existing posts
+showPost();
 //delete 
+function deletPostt(i) {
+  let passwordDelete = prompt("enter password delete")
+if (passwordDelete.trim() == "d-post-1") {
+  alertt("done✅✔✅✔","#31FF4B");
+  posts.splice(i);
+  localStorage.postN = JSON.stringify(posts);
+  showPost()
+  console.log(i)
+}
+  else {
+    alertt("اعتذر يا مستخدم يمكن لل مطور فقط حذف اي منشور.لكن ان كنت تريد ان تحذف اي منشو كلمي علي الوتس علي الرقم ده { 01501480908 }.","red")
+  }
+}
 
 // Variables dark mood
 let infoAlert = document.querySelector(".info-alert");
@@ -968,38 +926,30 @@ function searchere(value) {
         found = true;
         searchPost += `
       <div class="nasher post">
-      <div class = "head-post">
-      <div class = "date-info">
-      <p class = "date">${posts[i].date}</p>
-      <p class = "material-symbols-outlined date-icon">calendar_month</p>
-      </div>
         <div class="pro-post">
           <p>${posts[i].name}</p>
           <img class="pro-c" src = "pro1.jpeg" alt="">
-        </div>
         </div>
         <div class="post-info">
           <p>${posts[i].bodyPost}</p>
         </div>
         <div class="chosesec">
-
           <div class="upload like choke" onclick="deletPostt(${i})">
             <button id="deleteee" class="likee deleteee chokee">
               <p>delete</p>
               <span id="spanS" class="material-symbols-outlined">delete</span>
             </button>
           </div>
-
+          <div class="upload like choke" onclick="likee(${i})">
+            <button id="like" class="likee lookos chokee">
+              <p id="lnn">${posts[i].likes}</p>
+              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
+            </button>
+          </div>
           <div class="upload like choke" onclick="com(${i})">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${comentsLength}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
-            </button>
-          </div>
-                    <div class="upload like choke" onclick="likee(${i})">
-            <button id="like" class="likee lookos chokee">
-              <p id="lnn">${posts[i].likes}</p>
-              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
             </button>
           </div>
         </div>
@@ -1025,42 +975,35 @@ function searchere(value) {
         found = true;
         searchPost += `
       <div class="nasher post">
-      <div class = "head-post">
-      <div class = "date-info">
-      <p class = "date">${posts[i].date}</p>
-      <p class = "material-symbols-outlined date-icon">calendar_month</p>
-      </div>
         <div class="pro-post">
           <p>${posts[i].name}</p>
           <img class="pro-c" src = "pro1.jpeg" alt="">
-        </div>
         </div>
         <div class="post-info">
           <p>${posts[i].bodyPost}</p>
         </div>
         <div class="chosesec">
-
           <div class="upload like choke" onclick="deletPostt(${i})">
             <button id="deleteee" class="likee deleteee chokee">
               <p>delete</p>
               <span id="spanS" class="material-symbols-outlined">delete</span>
             </button>
           </div>
-
+          <div class="upload like choke" onclick="likee(${i})">
+            <button id="like" class="likee lookos chokee">
+              <p id="lnn">${posts[i].likes}</p>
+              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
+            </button>
+          </div>
           <div class="upload like choke" onclick="com(${i})">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${comentsLength}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
             </button>
           </div>
-                    <div class="upload like choke" onclick="likee(${i})">
-            <button id="like" class="likee lookos chokee">
-              <p id="lnn">${posts[i].likes}</p>
-              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
-            </button>
-          </div>
         </div>
-      </div>`;
+      </div>
+`;
       }
     }
 
@@ -1076,8 +1019,8 @@ function searchere(value) {
     }  }
 }
 
+//darLigh();
 
- 
                 
 function openSearch() {
   document.querySelector(".search-icon").style = `display:none;`;
