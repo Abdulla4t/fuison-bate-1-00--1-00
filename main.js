@@ -303,10 +303,30 @@ let pluse = document.getElementById ("pluse");
 // save body post
 // coment
 // Firebase configuration
+/*
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
-    import "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"; // استيراد Firestore SDK
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+import "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"; // استيراد Firestore SDK
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBwYJKxTTfl4ScDtz_f0VSAW_z2xL-vAVk",
+  authDomain: "fusion-ecf12.firebaseapp.com",
+  projectId: "fusion-ecf12",
+  storageBucket: "fusion-ecf12.appspot.com",
+  messagingSenderId: "115822790505",
+  appId: "1:115822790505:web:fa3a46ffa48b44d0c41ff8",
+  measurementId: "G-NSR4H6EGH1"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app) ;
+const db = firebase.firestore(); // استخدام firebase بدلاً من Firestore*/
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+import firebase from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"; // استيراد Firestore SDK
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -322,8 +342,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = firebase.firestore(); 
-endComentBtn.onclick = function() {
+const db = firebase.firestore(); // استخدام firestore() بدلاً من Firestore
+
+// الآن يمكنك استخدام db للتفاعل مع Firestore
+let sendComentBtn = document.querySelector('#sendComentBtn');
+sendComentBtn.onclick = function() {
   if (sendComent.value.trim() !== "") {
     let dateComent = new Date();
     let dateComentNow = dateComent.getFullYear() + "/" + (dateComent.getMonth() + 1) + "/" + dateComent.getDate();
@@ -1119,10 +1142,3 @@ window.onerror = function(message, source, lineno, colno, error) {
   // إعادة false لمنع ظهور رسالة الخطأ الافتراضية
   return false;
 };
-let logInbtn = document.getElementById("logInbtn")
-sinUpBtn.onclick = function () {
- sinUp()
-}
-logInbtn.onclick = function() {
-  login()
-}
