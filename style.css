@@ -593,6 +593,7 @@ align-items: center;
   z-index: 999;
   transition: 1.1s;
 }
+
 .senah{
   z-index: 100;
   flex-direction:column ;
@@ -977,12 +978,12 @@ margin: 25px 10px;
   font-size: 40px;
   height: 100vw;
   align-items: center;
+  justify-content: center;
   padding-bottom: 200px;
 }
 .monm p{
   display: flex;
   align-items: center;
-  padding-bottom: 500px;
 }
 .naveev img{
   border-radius: 50%;
@@ -1348,9 +1349,9 @@ margin: 5px 0;
   justify-content: space-around;
   text-align: center;}
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 0px;
   border-radius: 15px;
-  border: .3px solid #fff;
+  
 }
 
 ::-webkit-scrollbar-track {
