@@ -10,5 +10,5 @@ function senahFunction() {
 }
  
 
-senahMoodif = false;
+senahMoodif = true;
 senahFunction();
