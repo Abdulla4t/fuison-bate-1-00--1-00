@@ -1,5 +1,5 @@
 // Define cache names
-const CACHE_NAME = 'my-pwa-cache-ves';
+const CACHE_NAME = 'my-pwa-cache-v9';
 const ASSETS_TO_CACHE = [
   '/',
   '/main.js',
@@ -9,7 +9,6 @@ const ASSETS_TO_CACHE = [
   'toPlasten.js',
   '/manifest.json',
   '/to-plasten.json',
-  '/senah.js',
   '/index.html',
   '/style.css',
   '/logo.png',

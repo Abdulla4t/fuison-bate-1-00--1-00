@@ -135,8 +135,17 @@ font - size: 30 px;background: #2977F6;
 `;
 logoMood = "span";
   }
-}/*
-*/
+}
+let senahMood = false;
+let senah = document.querySelector(".senah")
+function senahFunction() {
+  if (!senahMood) {
+    senah.style.display = "none";
+  }
+  else{
+  senah.style.display = "flex";
+  }
+}
 // show and hidden 
 function show(name,heght,allm) {
   name.style = `
@@ -302,23 +311,30 @@ let pluse = document.getElementById ("pluse");
 //post 
 // save body post
 // coment
-// Firebase configuration
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
-import "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"; // استيراد Firestore SDK
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "/firebase/app";
+import { getAnalytics } from "/firebase/analytics";
+import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBwYJKxTTfl4ScDtz_f0VSAW_z2xL-vAVk", authDomain: "fusion-ecf12.firebaseapp.com", projectId: "fusion-ecf12", storageBucket: "fusion-ecf12.appspot.com", messagingSenderId: "115822790505", appId: "1:115822790505:web:fa3a46ffa48b44d0c41ff8", measurementId: "G-NSR4H6EGH1"
+  apiKey: "AIzaSyCyuBGv-_k1Ewy_dgE_SKmZ4ySAHJjnKoE",
+  authDomain: "fusion-a107a.firebaseapp.com",
+  projectId: "fusion-a107a",
+  storageBucket: "fusion-a107a.appspot.com",
+  messagingSenderId: "152309033769",
+  appId: "1:152309033769:web:61fb67508c4de1ed136538",
+  measurementId: "G-LK3ZNQ7784"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = firebase.firestore(); // استخدام firestore() بدلاً من Firestore
+const db = getFirestore(app);// Import the functions you need from the SDKs you need
 
-// الآن يمكنك استخدام db للتفاعل مع Firestore
-let sendComentBtn = document.querySelector('#sendComentBtn');
 sendComentBtn.onclick = function() {
   if (sendComent.value.trim() !== "") {
     let dateComent = new Date();
@@ -344,8 +360,6 @@ sendComentBtn.onclick = function() {
   }
 };
 
-
-let uploadbtn = document.querySelector('.uploadbtn');
 uploadbtn.onclick = function() {
   if (narInp && narInp.value.trim() !== "") {
     let now = new Date();
@@ -502,16 +516,6 @@ function deletePost(postId) {
       console.error("Error removing document: ", error);
     });
 }
-function ggg() {
-  let coment = document.getElementById("coment");
-  let boxComent = document.querySelector(".box-coment");
-  coment.style.transform = "translateY(-100%)";
-  boxComent.style.transform = "translateX(-100%)";
-  postIndex = -1; // Reset post index
-}
-// Call showPost on page load to display existing posts
-//delete 
-
 // Variables dark mood
 let infoAlert = document.querySelector(".info-alert");
 let alerte = document.getElementById("alertt");
@@ -965,38 +969,30 @@ function searchere(value) {
         found = true;
         searchPost += `
       <div class="nasher post">
-      <div class = "head-post">
-      <div class = "date-info">
-      <p class = "date">${posts[i].date}</p>
-      <p class = "material-symbols-outlined date-icon">calendar_month</p>
-      </div>
         <div class="pro-post">
           <p>${posts[i].name}</p>
           <img class="pro-c" src = "pro1.jpeg" alt="">
-        </div>
         </div>
         <div class="post-info">
           <p>${posts[i].bodyPost}</p>
         </div>
         <div class="chosesec">
-
           <div class="upload like choke" onclick="deletPostt(${i})">
             <button id="deleteee" class="likee deleteee chokee">
               <p>delete</p>
               <span id="spanS" class="material-symbols-outlined">delete</span>
             </button>
           </div>
-
+          <div class="upload like choke" onclick="likee(${i})">
+            <button id="like" class="likee lookos chokee">
+              <p id="lnn">${posts[i].likes}</p>
+              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
+            </button>
+          </div>
           <div class="upload like choke" onclick="com(${i})">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${comentsLength}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
-            </button>
-          </div>
-                    <div class="upload like choke" onclick="likee(${i})">
-            <button id="like" class="likee lookos chokee">
-              <p id="lnn">${posts[i].likes}</p>
-              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
             </button>
           </div>
         </div>
@@ -1022,42 +1018,35 @@ function searchere(value) {
         found = true;
         searchPost += `
       <div class="nasher post">
-      <div class = "head-post">
-      <div class = "date-info">
-      <p class = "date">${posts[i].date}</p>
-      <p class = "material-symbols-outlined date-icon">calendar_month</p>
-      </div>
         <div class="pro-post">
           <p>${posts[i].name}</p>
           <img class="pro-c" src = "pro1.jpeg" alt="">
-        </div>
         </div>
         <div class="post-info">
           <p>${posts[i].bodyPost}</p>
         </div>
         <div class="chosesec">
-
           <div class="upload like choke" onclick="deletPostt(${i})">
             <button id="deleteee" class="likee deleteee chokee">
               <p>delete</p>
               <span id="spanS" class="material-symbols-outlined">delete</span>
             </button>
           </div>
-
+          <div class="upload like choke" onclick="likee(${i})">
+            <button id="like" class="likee lookos chokee">
+              <p id="lnn">${posts[i].likes}</p>
+              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
+            </button>
+          </div>
           <div class="upload like choke" onclick="com(${i})">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${comentsLength}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
             </button>
           </div>
-                    <div class="upload like choke" onclick="likee(${i})">
-            <button id="like" class="likee lookos chokee">
-              <p id="lnn">${posts[i].likes}</p>
-              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
-            </button>
-          </div>
         </div>
-      </div>`;
+      </div>
+`;
       }
     }
 
@@ -1073,8 +1062,8 @@ function searchere(value) {
     }  }
 }
 
+//darLigh();
 
- 
                 
 function openSearch() {
   document.querySelector(".search-icon").style = `display:none;`;
@@ -1096,159 +1085,7 @@ function trans() {
 
 */
 // التأكد من أن دالة alertt موجودة أو تعريفها إذا لم تكن موجودة
-let checkPassword = document.getElementById("checkPassword");
-let checkPasswordLog = document.getElementById("checkPasswordLog");
-let passwordSin = document.getElementById("passwordSin");
-let passwordLog = document.getElementById("passwordLog");
 
-checkPasswordLog.onclick = function() {
-  if (checkPasswordLog.checked) {
-    passwordLog.type = "text";
-  } else {
-    passwordLog.type = "password";
-  }
-}
-
-checkPassword.onclick = function() {
-  if (checkPassword.checked) {
-    passwordSin.type = "text";
-  } else {
-    passwordSin.type = "password";
-  }
-}
-let sinLog = document.getElementById("sinLog");
-let logSin = document.getElementById("logSin");
-let log = document.querySelector(".log");
-let sin = document.querySelector(".sin");
-sinLog.onclick  = function () {
-  sin.style = `display:none;`
-  log.style = `display:flex;`
-}
-logSin.onclick  = function () {
-  log.style = `display:none;`
-  sin.style = `display:flex;`
-}
-
-//[sinUpName,sinUpEmail,dateYearSin,dateMontheSin,dateDaySin,passwordSin]
-
-// sin  up 
-let sinUpBtn = document.getElementById("sinUpBtn");
-
-let sinUpEmail = document.getElementById("sinUpEmail");
-let sinUpName = document.getElementById("sinUpName");
-let dateYearSin = document.getElementById("dateYearSin");
-let dateMontheSin = document.getElementById("dateMontheSin");
-let dateDaySin = document.getElementById("dateDaySin");
-
-let users = JSON.parse(localStorage.getItem("usersv")) || [];
-function sinUp() {
-  if (
-    sinUpName.value.trim() !== "" &&
-    sinUpEmail.value.trim() !== "" &&
-    dateYearSin.value.trim() !== "" &&
-    dateMontheSin.value.trim() !== "" &&
-    dateDaySin.value.trim() !== "" &&
-    passwordSin.value.trim() !== ""
-  )
-  {
-    // الحصول على التاريخ الحالي
-    let dateSinUpAll = new Date();
-    let dateYear = dateSinUpAll.getFullYear();
-    let dateMonth = dateSinUpAll.getMonth() + 1; // الأشهر تبدأ من 0 لذلك نضيف 1
-    let dateDay = dateSinUpAll.getDate();
-
-    // حساب العمر
-    let inputYear = parseInt(dateYearSin.value);
-    let inputMonth = parseInt(dateMontheSin.value);
-    let inputDay = parseInt(dateDaySin.value);
-
-    let age = dateYear - inputYear;
-    if (dateMonth < inputMonth || (dateMonth === inputMonth && dateDay < inputDay)) {
-      age--;
-    }
-
-    // التحقق من العمر
-    if (age >= 10 && age <= 500) {
-      let foundUser = false;
-      for (var i = 0; i < users.length; i++) {
-        if (sinUpName.value.trim() === users[i].name  || sinUpEmail.value.trim() === users[i].phone) {
-          foundUser = true;
-          alertt("Sorry, this user already exists ","red")
-        }
-      }
-      if (foundUser == false) {
-              let user = {
-        name: sinUpName.value.trim(),
-        phone: sinUpEmail.value.trim(),
-        password: passwordSin.value.trim(),
-      }
-      users.push(user);
-
-      console.log(users)
-      localStorage.setItem("usersv", JSON.stringify(users));
-      nameInput = sinUpName.value.trim();
-      clearInluts();
-      showApp();
-     alertt("An account has been created","#31FF4B")
-      }
-    } else {
-      alertt("sorry "+sinUpName.value.trim() +". You can't enter to fusion. Because you are young. ","red")
-    }
-  } else {
-    alertt("ااملا جميع الحقول","red");  }
-}
-function clearInluts() {
-  sinUpName.value = "" ;
-  sinUpEmail.value = "" ;
-  dateYearSin.value = "" ;
-  dateMontheSin.value = "" ; 
-  dateDaySin.value = "" ;
-  passwordSin.value = "";
-}
-function showApp() {
-  document.querySelector(".login").style = `display:none `;
-  document.querySelector(".navbar").style= `display:flex `;
-}
-let nameLog = document.getElementById("nameLog")
-function login() {
-  if (passwordLog.value.trim().toLocaleLowerCase() !== "" && nameLog.value.trim().toLocaleLowerCase() !== "") {
-    
-  
- let userLogin = false;
- let lantheUser ;
- for (var i = 0; i < users.length; i++) {
-   if (passwordLog.value.trim().toLocaleLowerCase() === users[i].password.toLocaleLowerCase()  && nameLog.value.trim().toLocaleLowerCase() === users[i].phone.toLocaleLowerCase()) {
-     userLogin = true;
-     nameInput = users[i].name;
-   }
-   else if(passwordLog.value.trim().toLocaleLowerCase() !== users[i].password.toLocaleLowerCase()  && nameLog.value.trim().toLocaleLowerCase() 
-   !== users[i].phone.toLocaleLowerCase()){
-     alertt("The password and (email or phone number) are incorrect","red")
-   }
-   else if (nameLog.value.trim().toLocaleLowerCase() !==
-  users[i].phone.toLocaleLowerCase()) {
-     alertt("Invalid email or phone number","red")
-   }
-   else if(passwordLog.value.trim().toLocaleLowerCase() !==
-  users[i].phone.toLocaleLowerCase()){
-    alertt("Password error","red")
-   }
- }
- if (userLogin == true) {
-   alertt("You are logged in","#31FF4B")
-   showApp()
- }
- }
-  else if(passwordLog.value.trim().toLocaleLowerCase() === "" && nameLog.value.trim().toLocaleLowerCase() === "") {
-   alertt("Fill in the field (email or phone number) and password","red");
- }
- else if (nameLog.value.trim().toLocaleLowerCase() === "") {
-  alertt("Fill in the field (email or phone number)", "red");
-}
-else if (passwordLog.value.trim().toLocaleLowerCase() === "") {
-  alertt("Fill in the field password", "red");
-}
-}
 window.onerror = function(message, source, lineno, colno, error) {
   // عرض رسالة تنبيه عند حدوث خطأ
   alertt("):حدث خطأ، سوف يتم إعادة تحميل الموقع " + error, "red");
@@ -1267,3 +1104,14 @@ window.onerror = function(message, source, lineno, colno, error) {
   // إعادة false لمنع ظهور رسالة الخطأ الافتراضية
   return false;
 };
+let logInbtn = document.getElementById("logInbtn")
+sinUpBtn.onclick = function () {
+ sinUp()
+}
+logInbtn.onclick = function() {
+  login()
+}
+senahMood = false;
+
+
+senahFunction();
