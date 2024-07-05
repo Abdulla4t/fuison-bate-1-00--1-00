@@ -657,7 +657,233 @@ n11();
 
 // search 
 
- let searchMood = "opject";
+
+
+
+/*let valuelange = "en";
+function trans() {
+  if (valuelange === "en") {
+    valuelange = "ar";
+  } else {
+    valuelange = "en";
+  }
+  console.log(valuelange);
+}
+
+*/
+// التأكد من أن دالة alertt موجودة أو تعريفها إذا لم تكن موجودة
+
+window.onerror = function(message, source, lineno, colno, error) {
+  // عرض رسالة تنبيه عند حدوث خطأ
+  alertt("):حدث خطأ، سوف يتم إعادة تحميل الموقع " + error, "red");
+
+  // تعيين حدث النقر على الزر .btn-info لإعادة تحميل الصفحة
+  var reloadButton = document.querySelector(".btn-info");
+  if (reloadButton) {
+    reloadButton.onclick = function() {
+      location.reload();
+    };
+  } else {
+    // إذا لم يكن الزر موجودًا، إعادة تحميل الصفحة فورًا
+    location.reload();
+  }
+
+  // إعادة false لمنع ظهور رسالة الخطأ الافتراضية
+  return false;
+};
+let logInbtn = document.getElementById("logInbtn")
+sinUpBtn.onclick = function () {
+ sinUp()
+}
+logInbtn.onclick = function() {
+  login()
+}
+senahMood = false;
+import {db} from '/module.js';
+let sendComentBtn = document.getElementById('sendComentBtn');
+sendComentBtn.onclick = function() {
+  if (sendComent.value.trim() !== "") {
+    let dateComent = new Date();
+    let dateComentNow = dateComent.getFullYear() + "/" + (dateComent.getMonth() + 1) + "/" + dateComent.getDate();
+    let newComent = {
+      bodyComent: sendComent.value,
+      nameComent: nameInput,
+      datecoment: dateComentNow,
+    };
+    if (postIndex >= 0) {
+      if (!posts[postIndex].coments) {
+        posts[postIndex].coments = []; // Ensure the comments array exists
+      }
+      posts[postIndex].coments.push(newComent);
+      localStorage.setItem("postN", JSON.stringify(posts));
+      showComent();
+      sendComent.value = "";
+    } else {
+      console.log("No post selected for comment");
+    }
+  } else {
+    console.log("Comment is empty");
+  }
+};
+let uploadbtn = document.querySelector('.uploadbtn')
+uploadbtn.onclick = function() {
+  if (narInp && narInp.value.trim() !== "") {
+    let now = new Date();
+    let date = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
+    console.log(date);
+    let newPost = {
+      bodyPost: narInp.value,
+      name: nameInput,
+      likes: 0,
+      date: date,
+      coments: [],
+    };
+
+    db.collection("posts").add(newPost)
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        // تحديث المنشورات بعد إضافة منشور جديد
+        fetchPosts();
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+
+    clearInput();
+  } else {
+    alertt("Element with id 'narInp' not found or input value is empty.", "red");
+  }
+};
+
+function showComent() {
+  let comentser = document.getElementById("comentser");
+  comentser.innerHTML = "";
+
+  if (postIndex >= 0 && posts[postIndex].coments) {
+    let storedComents = posts[postIndex].coments;
+
+    if (storedComents.length === 0) {
+      comentser.innerHTML = '<p class = "p-nan">لا يوجد تعليقات كون اول من يعلق</p>';
+    } else {
+      for (let i = 0; i < storedComents.length; i++) {
+        let comentHTML = `
+          <div class="coment1">
+            <div class="profile-coment">
+              <img src = "pro1.jpeg" alt="">
+              <p class="pro-name-com">${storedComents[i].nameComent}</p>
+              <p class= "comet-date-info">${storedComents[i].datecoment}</p>
+            </div>
+            <div class="info-txt-com">
+              <p>${storedComents[i].bodyComent}</p>
+            </div>
+          </div>`;
+        comentser.innerHTML += comentHTML;
+      }
+    }
+  } else {
+    comentser.innerHTML = '<p class = "p-nan">لا يوجد تعليقات كون اول من يعلق</p>';
+  }
+}
+
+let comentsLength;
+// دالة لاسترجاع المنشورات ووضعها في المصفوفة
+function fetchPosts() {
+  db.collection("posts").get().then((querySnapshot) => {
+      posts = []; // نعيد تعيين المصفوفة لتفادي تكرار البيانات
+
+      if (querySnapshot.empty) {
+        console.log("No posts found");
+      } else {
+        const docs = querySnapshot.docs;
+        for (let i = 0; i < docs.length; i++) {
+          let postData = docs[i].data();
+          postData.id = docs[i].id; // إضافة معرّف الوثيقة إلى البيانات
+          posts.push(postData);
+        }
+      }
+
+      // عرض المنشورات على واجهة المستخدم (اختياري)
+      showPost(posts);
+    })
+    .catch((error) => {
+      console.error("Error fetching documents: ", error);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  fetchPosts();
+});
+
+function showPost(posts) {
+  let postn = "";
+  for (let i = posts.length - 1; i >= 0; i--) {
+    comentsLength = posts[i].coments ? posts[i].coments.length : 0;
+    postn += `
+      <div class="nasher post">
+        <div class="head-post">
+          <div class="date-info">
+            <p class="date">${posts[i].date}</p>
+            <p class="material-symbols-outlined date-icon">calendar_month</p>
+          </div>
+          <div class="pro-post">
+            <p>${posts[i].name}</p>
+            <img class="pro-c" src="pro1.jpeg" alt="">
+          </div>
+        </div>
+        <div class="post-info">
+          <p>${posts[i].bodyPost}</p>
+        </div>
+        <div class="chosesec">
+          <div class="upload like choke" onclick="deletePost('${posts[i].id}')">
+            <button id="deleteee" class="likee deleteee chokee">
+              <p>delete</p>
+              <span id="spanS" class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+          <div class="upload like choke" onclick="com(${i})">
+            <button id="like" class="likee lookos chokee">
+              <p id="lnn">${comentsLength}</p>
+              <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
+            </button>
+          </div>
+          <div class="upload like choke" onclick="likee(${i})">
+            <button id="like" class="likee lookos chokee">
+              <p id="lnn">${posts[i].likes}</p>
+              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById("posts").innerHTML = postn;
+}
+
+function clearInput() {
+  narInp.value = "";
+}
+
+function com(index) {
+  let coment = document.getElementById("coment");
+  let boxComent = document.querySelector(".box-coment");
+  coment.style = `transform:translateY(0%)`;
+  boxComent.style = `transform:translateX(0%)`;
+  postIndex = index;
+  showComent();
+}
+
+function deletePost(postId) {
+  db.collection("posts").doc(postId).delete()
+    .then(() => {
+      console.log("Document successfully deleted!");
+      fetchPosts();
+    })
+    .catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+}
+// Variables dark mood
+let searchMood = "opject";
  let inputSs = document.getElementById("inputSs")
  function getSearchMood(id) {
   if (id == "byOpject") {
@@ -888,230 +1114,3 @@ function openSearch() {
 }
 
 
-
-/*let valuelange = "en";
-function trans() {
-  if (valuelange === "en") {
-    valuelange = "ar";
-  } else {
-    valuelange = "en";
-  }
-  console.log(valuelange);
-}
-
-*/
-// التأكد من أن دالة alertt موجودة أو تعريفها إذا لم تكن موجودة
-
-window.onerror = function(message, source, lineno, colno, error) {
-  // عرض رسالة تنبيه عند حدوث خطأ
-  alertt("):حدث خطأ، سوف يتم إعادة تحميل الموقع " + error, "red");
-
-  // تعيين حدث النقر على الزر .btn-info لإعادة تحميل الصفحة
-  var reloadButton = document.querySelector(".btn-info");
-  if (reloadButton) {
-    reloadButton.onclick = function() {
-      location.reload();
-    };
-  } else {
-    // إذا لم يكن الزر موجودًا، إعادة تحميل الصفحة فورًا
-    location.reload();
-  }
-
-  // إعادة false لمنع ظهور رسالة الخطأ الافتراضية
-  return false;
-};
-let logInbtn = document.getElementById("logInbtn")
-sinUpBtn.onclick = function () {
- sinUp()
-}
-logInbtn.onclick = function() {
-  login()
-}
-senahMood = false;
-import {db} from '/module.js';
-let sendComentBtn = document.getElementById('sendComentBtn');
-sendComentBtn.onclick = function() {
-  if (sendComent.value.trim() !== "") {
-    let dateComent = new Date();
-    let dateComentNow = dateComent.getFullYear() + "/" + (dateComent.getMonth() + 1) + "/" + dateComent.getDate();
-    let newComent = {
-      bodyComent: sendComent.value,
-      nameComent: nameInput,
-      datecoment: dateComentNow,
-    };
-    if (postIndex >= 0) {
-      if (!posts[postIndex].coments) {
-        posts[postIndex].coments = []; // Ensure the comments array exists
-      }
-      posts[postIndex].coments.push(newComent);
-      localStorage.setItem("postN", JSON.stringify(posts));
-      showComent();
-      sendComent.value = "";
-    } else {
-      console.log("No post selected for comment");
-    }
-  } else {
-    console.log("Comment is empty");
-  }
-};
-let uploadbtn = document.querySelector('.uploadbtn')
-uploadbtn.onclick = function() {
-  if (narInp && narInp.value.trim() !== "") {
-    let now = new Date();
-    let date = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
-    console.log(date);
-    let newPost = {
-      bodyPost: narInp.value,
-      name: nameInput,
-      likes: 0,
-      date: date,
-      coments: [],
-    };
-
-    db.collection("posts").add(newPost)
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-        // تحديث المنشورات بعد إضافة منشور جديد
-        fetchPosts();
-      })
-      .catch((error) => {
-        console.error("Error adding document: ", error);
-      });
-
-    clearInput();
-  } else {
-    alertt("Element with id 'narInp' not found or input value is empty.", "red");
-  }
-};
-
-function showComent() {
-  let comentser = document.getElementById("comentser");
-  comentser.innerHTML = "";
-
-  if (postIndex >= 0 && posts[postIndex].coments) {
-    let storedComents = posts[postIndex].coments;
-
-    if (storedComents.length === 0) {
-      comentser.innerHTML = '<p class = "p-nan">لا يوجد تعليقات كون اول من يعلق</p>';
-    } else {
-      for (let i = 0; i < storedComents.length; i++) {
-        let comentHTML = `
-          <div class="coment1">
-            <div class="profile-coment">
-              <img src = "pro1.jpeg" alt="">
-              <p class="pro-name-com">${storedComents[i].nameComent}</p>
-              <p class= "comet-date-info">${storedComents[i].datecoment}</p>
-            </div>
-            <div class="info-txt-com">
-              <p>${storedComents[i].bodyComent}</p>
-            </div>
-          </div>`;
-        comentser.innerHTML += comentHTML;
-      }
-    }
-  } else {
-    comentser.innerHTML = '<p class = "p-nan">لا يوجد تعليقات كون اول من يعلق</p>';
-  }
-}
-
-let comentsLength;
-// دالة لاسترجاع المنشورات ووضعها في المصفوفة
-function fetchPosts() {
-  db.collection("posts").get().then((querySnapshot) => {
-      posts = []; // نعيد تعيين المصفوفة لتفادي تكرار البيانات
-
-      if (querySnapshot.empty) {
-        console.log("No posts found");
-      } else {
-        const docs = querySnapshot.docs;
-        for (let i = 0; i < docs.length; i++) {
-          let postData = docs[i].data();
-          postData.id = docs[i].id; // إضافة معرّف الوثيقة إلى البيانات
-          posts.push(postData);
-        }
-      }
-
-      // عرض المنشورات على واجهة المستخدم (اختياري)
-      showPost(posts);
-    })
-    .catch((error) => {
-      console.error("Error fetching documents: ", error);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  fetchPosts();
-});
-
-function showPost(posts) {
-  let postn = "";
-  for (let i = posts.length - 1; i >= 0; i--) {
-    comentsLength = posts[i].coments ? posts[i].coments.length : 0;
-    postn += `
-      <div class="nasher post">
-        <div class="head-post">
-          <div class="date-info">
-            <p class="date">${posts[i].date}</p>
-            <p class="material-symbols-outlined date-icon">calendar_month</p>
-          </div>
-          <div class="pro-post">
-            <p>${posts[i].name}</p>
-            <img class="pro-c" src="pro1.jpeg" alt="">
-          </div>
-        </div>
-        <div class="post-info">
-          <p>${posts[i].bodyPost}</p>
-        </div>
-        <div class="chosesec">
-          <div class="upload like choke" onclick="deletePost('${posts[i].id}')">
-            <button id="deleteee" class="likee deleteee chokee">
-              <p>delete</p>
-              <span id="spanS" class="material-symbols-outlined">delete</span>
-            </button>
-          </div>
-          <div class="upload like choke" onclick="com(${i})">
-            <button id="like" class="likee lookos chokee">
-              <p id="lnn">${comentsLength}</p>
-              <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
-            </button>
-          </div>
-          <div class="upload like choke" onclick="likee(${i})">
-            <button id="like" class="likee lookos chokee">
-              <p id="lnn">${posts[i].likes}</p>
-              <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-  document.getElementById("posts").innerHTML = postn;
-}
-
-function clearInput() {
-  narInp.value = "";
-}
-
-function com(index) {
-  let coment = document.getElementById("coment");
-  let boxComent = document.querySelector(".box-coment");
-  coment.style = `transform:translateY(0%)`;
-  boxComent.style = `transform:translateX(0%)`;
-  postIndex = index;
-  showComent();
-}
-
-function deletePost(postId) {
-  db.collection("posts").doc(postId).delete()
-    .then(() => {
-      console.log("Document successfully deleted!");
-      fetchPosts();
-    })
-    .catch((error) => {
-      console.error("Error removing document: ", error);
-    });
-}
-// Variables dark mood
-
-
-senahFunction();
