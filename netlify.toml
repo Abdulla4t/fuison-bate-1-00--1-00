@@ -1,0 +1,8 @@
+[build]
+publish = "public" # المسار إلى المجلد الذي يحتوي على ملفات HTML و JavaScript
+command = "" # اترك هذا السطر فارغًا إذا كنت لا تستخدم أدوات بناء
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
