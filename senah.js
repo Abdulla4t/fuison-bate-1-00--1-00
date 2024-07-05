@@ -1,3 +1,4 @@
+
 let senahMood = false;
 let senah = document.querySelector(".senah")
 function senahFunction() {
