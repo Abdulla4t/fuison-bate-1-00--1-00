@@ -1,5 +1,5 @@
 // Define cache names
-const CACHE_NAME = 'my-pwa-cache-v9';
+const CACHE_NAME = 'my-pwa-cache-v10';
 const ASSETS_TO_CACHE = [
   '/',
   '/main.js',
@@ -9,6 +9,7 @@ const ASSETS_TO_CACHE = [
   'toPlasten.js',
   '/manifest.json',
   '/to-plasten.json',
+  '/netlify.toml',
   '/index.html',
   '/style.css',
   '/logo.png',

@@ -1,5 +1,5 @@
 [build]
-publish = "public" # المسار إلى المجلد الذي يحتوي على ملفات HTML و JavaScript
+publish = "." # المسار إلى الجذر الذي يحتوي على ملفات HTML و JavaScript
 command = "" # اترك هذا السطر فارغًا إذا كنت لا تستخدم أدوات بناء
 
 [[redirects]]
