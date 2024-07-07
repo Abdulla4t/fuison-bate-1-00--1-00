@@ -302,16 +302,16 @@ let numfavet = i;
 likeMood = "like";
 }
 
-//  
+/*
   localStorage.postN = JSON.stringify(posts);
   showPost();
-  
+  */
   }
 let pluse = document.getElementById ("pluse");
-//post 
-// save body post
-// coment
-/* Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -319,20 +319,46 @@ let pluse = document.getElementById ("pluse");
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-      apiKey: "AIzaSyCyuBGv-_k1Ewy_dgE_SKmZ4ySAHJjnKoE",
-      authDomain: "fusion-a107a.firebaseapp.com",
-      projectId: "fusion-a107a",
-      storageBucket: "fusion-a107a.appspot.com",
-      messagingSenderId: "152309033769",
-      appId: "1:152309033769:web:61fb67508c4de1ed136538",
-      measurementId: "G-LK3ZNQ7784"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+  apiKey: "AIzaSyCyuBGv-_k1Ewy_dgE_SKmZ4ySAHJjnKoE",
+  authDomain: "fusion-a107a.firebaseapp.com",
+  projectId: "fusion-a107a",
+  storageBucket: "fusion-a107a.appspot.com",
+  messagingSenderId: "152309033769",
+  appId: "1:152309033769:web:61fb67508c4de1ed136538",
+  measurementId: "G-LK3ZNQ7784"
+};
 
-    // Firestore reference
-    const db = firebase.firestore();*/
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+// Example usage of Firestore functions
+const addDocument = async () => {
+  try {
+    const docRef = await addDoc(collection(db, "yourCollectionName"), {
+      // your document data
+      field: "value" // Add your document fields here
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+
+const listenToCollection = () => {
+  const unsubscribe = onSnapshot(collection(db, "yourCollectionName"), (snapshot) => {
+    snapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+  });
+
+  // Call unsubscribe() to stop listening to changes
+};
+
+// Call the functions to see them in action
+addDocument();
+listenToCollection();
 let infoAlert = document.querySelector(".info-alert");
 let alerte = document.getElementById("alertt");
 let pMoodWeb = document.querySelector(".pMoodWeb");
@@ -699,7 +725,7 @@ logInbtn.onclick = function() {
   login()
 }
 senahMood = false;
-import {db} from '/module.js';
+
 let sendComentBtn = document.getElementById('sendComentBtn');
 sendComentBtn.onclick = function() {
   if (sendComent.value.trim() !== "") {
