@@ -1,6 +1,6 @@
 
 let senahMood = false;
-let senah = document.querySelector(".senah")
+let senah = document.querySelector('.senah')
 function senahFunction() {
   if (!senahMood) {
     senah.style.display = "none";
@@ -11,5 +11,5 @@ function senahFunction() {
 }
  
 
-senahMoodif = false;
+senahMood = false;
 senahFunction();

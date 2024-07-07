@@ -313,11 +313,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
 import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCyuBGv-_k1Ewy_dgE_SKmZ4ySAHJjnKoE",
   authDomain: "fusion-a107a.firebaseapp.com",
@@ -333,12 +329,13 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-// Example usage of Firestore functions
-const addDocument = async () => {
+// Function to add a document to the "users" collection
+const addUserDocument = async () => {
   try {
-    const docRef = await addDoc(collection(db, "yourCollectionName"), {
-      // your document data
-      field: "value" // Add your document fields here
+    const docRef = await addDoc(collection(db, "users"), {
+      name: "John Doe",
+      email: "johndoe@example.com",
+      age: 30
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
@@ -346,19 +343,22 @@ const addDocument = async () => {
   }
 };
 
-const listenToCollection = () => {
-  const unsubscribe = onSnapshot(collection(db, "yourCollectionName"), (snapshot) => {
+// Function to listen to the "users" collection
+const listenToUsersCollection = () => {
+  const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
     snapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
     });
+  }, (error) => {
+    console.error("Error listening to collection: ", error);
   });
 
   // Call unsubscribe() to stop listening to changes
 };
 
 // Call the functions to see them in action
-addDocument();
-listenToCollection();
+addUserDocument();
+listenToUsersCollection();
 let infoAlert = document.querySelector(".info-alert");
 let alerte = document.getElementById("alertt");
 let pMoodWeb = document.querySelector(".pMoodWeb");
@@ -872,7 +872,7 @@ function showPost(posts) {
               <span id="spanSs" class="material-symbols-outlined spanS">comment</span>
             </button>
           </div>
-          <div class="upload like choke" onclick="likee(${i})">
+          <div class="upload like choke" onclick="">
             <button id="like" class="likee lookos chokee">
               <p id="lnn">${posts[i].likes}</p>
               <span id="spanSs" class="material-symbols-outlined spanS">thumb_up</span>
